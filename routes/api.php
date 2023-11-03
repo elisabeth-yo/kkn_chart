@@ -10,6 +10,7 @@ use App\Http\Controllers\IndustryController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SupplyController;
+use App\Http\Controllers\UserController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -56,6 +57,14 @@ Route::group(['prefix' => 'admin', 'middleware' => []], function () {
             Route::post('store', [BenefitController::class, 'store'])->name('store');
             Route::patch('/update/{benefitId}', [BenefitController::class, 'update'])->name('update');
             Route::delete('/destroy/{benefitId}', [BenefitController::class, 'destroy'])->name('destroy');
+        });
+
+        Route::group(['prefix' => 'users', 'as' => 'users.', 'middleware' => []], function () {
+            Route::get('/', [UserController::class, 'index'])->name('index');
+            Route::get('/{userId}', [UserController::class, 'show'])->name('show');
+            Route::post('store', [UserController::class, 'store'])->name('store');
+            Route::patch('/update/{userId}', [UserController::class, 'update'])->name('update');
+            Route::delete('/destroy/{userId}', [UserController::class, 'destroy'])->name('destroy');
         });
 
         Route::group(['prefix' => 'clients', 'as' => 'clients.', 'middleware' => []], function () {

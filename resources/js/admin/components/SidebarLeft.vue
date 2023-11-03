@@ -1,10 +1,9 @@
 <template>
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
-
         <a href="index3.html" class="brand-link">
             <img src="https://adminlte.io/themes/v3/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                 style="opacity: .8">
-            <span class="brand-text font-weight-light">EBIZ</span>
+            <span class="brand-text font-weight-light">KKN GKJ Yeremia</span>
         </a>
 
         <div class="sidebar">
@@ -29,87 +28,60 @@
                             </p>
                         </router-link>
                     </li>
-                    
-                    <li class="nav-item">
-                        <router-link to="/admin/qr-code" active-class="active" :class="$route.path.startsWith('/admin/qr-code') ? 'active' : ''" class="nav-link">
-                            <i class="nav-icon fas fa-solid fa-heart"></i>
-                            <p>
-                                Qr-Code
-                            </p>
-                        </router-link>
-                    </li>
 
                     <li class="nav-item">
-                        <router-link to="/admin/industries" active-class="active" :class="$route.path.startsWith('/admin/industries') ? 'active' : ''" class="nav-link">
+                        <router-link to="" :class="$route.path.startsWith('/admin/industries') ? 'active' : ''" class="nav-link">
                             <i class="nav-icon fas fa-industry"></i>
                             <p>
-                                Industries
+                                Data Jemaat
                             </p>
                         </router-link>
                     </li>
 
                     <li class="nav-item">
-                        <router-link to="/admin/suppliers" :class="$route.path.startsWith('/admin/suppliers') ? 'active' : ''" class="nav-link">
+                        <router-link to=""  class="nav-link">
                             <i class="nav-icon fas fa-truck"></i>
                             <p>
-                                Suppliers
+                                Berita & Kegiatan
                             </p>
                         </router-link>
                     </li>
 
-                    <!-- <li class="nav-item">
-                        <router-link to="/admin/brands" active-class="active" class="nav-link">
-                            <i class="nav-icon fas fa-medal"></i>
-                            <p>
-                                Brands
-                            </p>
-                        </router-link>
-                    </li> -->
-
-                    <!-- <li class="nav-item">
-                        <router-link to="/admin/products" active-class="active" class="nav-link">
-                            <i class="nav-icon fas fa-box"></i>
-                            <p>
-                                Products
-                            </p>
-                        </router-link>
-                    </li> -->
-
                     <li class="nav-item">
-                        <router-link to="/admin/benefits" active-class="active" class="nav-link">
+                        <router-link to="" class="nav-link">
                             <i class="nav-icon fas fa-gift"></i>
                             <p>
-                                Benefits
+                                Streaming Ibadah
                             </p>
                         </router-link>
                     </li>
 
                     <li class="nav-item">
-                        <router-link to="/admin/partners" active-class="active" class="nav-link">
+                        <router-link to="/admin/users" active-class="active" class="nav-link">
                             <i class="nav-icon fas fa-handshake"></i>
                             <p>
-                                Partners
+                                Tambah Pengguna
                             </p>
                         </router-link>
                     </li>
 
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <router-link to="/admin/clients" active-class="active" class="nav-link">
                             <i class="nav-icon fas fa-user-tie"></i>
                             <p>
                                 Clients
                             </p>
                         </router-link>
-                    </li>
+                    </li> -->
 
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <router-link to="/admin/home-setting" active-class="active" class="nav-link">
                             <i class="nav-icon fas fa-ad"></i>
                             <p>
                                 Home Settings
                             </p>
                         </router-link>
-                    </li>
+                    </li> -->
 
                     <li class="nav-item">
                         <form class="nav-link">
@@ -120,14 +92,10 @@
                                 </p>
                             </a>
                         </form>
-
                     </li>
-
                 </ul>
             </nav>
-
         </div>
-
     </aside>
 </template>
 

@@ -5,7 +5,7 @@
             
         </div>
 
-        <strong>Copyright &copy; 2023 www.ebiz.com.</strong> All rights reserved.
+        <strong>Copyright &copy; 2023 UKDC Team</strong> All rights reserved.
     </footer>
 </template>
 

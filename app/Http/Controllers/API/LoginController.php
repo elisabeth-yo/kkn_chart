@@ -4,7 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserLoginRequest;
-use App\Http\Resources\UserResource;
+use App\Http\Resources\LoginResource;
 use App\Models\User;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Request;
@@ -32,7 +32,7 @@ class LoginController extends Controller
         return response()->json([
             'message' => 'Success',
             'token' => $token,
-            'user' => new UserResource($user)
+            'user' => new LoginResource($user)
         ], 201);
     }
 

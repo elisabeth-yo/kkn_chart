@@ -29,19 +29,18 @@
                         <thead>
                             <tr>
                                 <th style="width: 10px">#</th>
-                                <th>Title</th>
-                                <th>Status Active</th>
-                                <th>Image</th>
-                                <th>Options</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Password</th>
                             </tr>
                         </thead>
                         <tbody v-if="datas.data.length > 0" class="tbody-">
                             <tr v-for="(data, index) in datas.data" :key="index">                                    
                                 <td v-if="pageNumber > 1">{{ pageNumber - 1 }}{{ index + 1 }}</td>
                                 <td v-else>{{ index + 1 }}</td>
-                                <td>{{ data.title }}</td>
-                                <td>{{ data.is_active === 1 ? 'Active' : 'Non Active' }}</td>
-                                <td><img :src="data.image" :alt="data.title" class="img"></td>
+                                <td>{{ data.name }}</td>
+                                <td>{{ data.email }}</td>
+                                <td>{{ data.password }}</td>
                                 <td>
                                     <a href="#" @click.prevent="edit(data)"><i class="fa fa-edit"></i></a>
                                     <a href="#" @click.prevent="confirmDeletion(data.id)"><i class="fa fa-trash text-danger ml-2"></i></a>
@@ -70,8 +69,8 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="staticBackdropLabel">
-                        <span v-if="statusEditing">Edit Partners</span>
-                        <span v-else>Add New Partners</span>
+                        <span v-if="statusEditing">Edit Users</span>
+                        <span v-else>Add New Users</span>
                     </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -81,30 +80,22 @@
                     <div class="modal-body">
                         
                         <div class="form-group">
-                            <label for="title">Title</label>
-                            <Field name="title" type="text" class="form-control" :class="{ 'is-invalid': errors.title }" id="title" aria-describedby="titleHelp" placeholder="Enter title" />
-                            <span class="invalid-feedback">{{ errors.title }}</span>
+                            <label for="name">Name</label>
+                            <Field name="name" type="text" class="form-control" :class="{ 'is-invalid': errors.name }" id="name" />
+                            <span class="invalid-feedback">{{ errors.name }}</span>
                         </div>
 
                         <div class="form-group">
-                            <label for="is_active">Status Active</label>
-                            <Field name="is_active" as="select" class="form-control" :class="{ 'is-invalid': errors.is_active }" id="is_active">
-                                <option value="1">Active</option>
-                                <option value="0">Non Active</option>
-                            </Field>
-                            <span class="invalid-feedback">{{ errors.is_active }}</span>
+                            <label for="email">Email</label>
+                            <Field name="email" type="email" class="form-control" :class="{ 'is-invalid': errors.email }" id="email"/>
+                            <span class="invalid-feedback">{{ errors.email }}</span>
                         </div>
-
+                        
                         <div class="form-group">
-                            <label for="image">Image</label>
-                            <div v-if="statusEditing">
-                                <br>
-                                <img :src="formImage.image" class="img">
-                            </div>
-                            <Field name="image" type="file" class="form-control" :class="{ 'is-invalid': errors.image }" id="image" aria-describedby="imageHelp" accept="image/*" />
-                            <span class="invalid-feedback">{{ errors.image }}</span>
+                            <label for="password">Password</label>
+                            <Field name="password" type="password" class="form-control" :class="{ 'is-invalid': errors.password }" id="password"/>
+                            <span class="invalid-feedback">{{ errors.password }}</span>
                         </div>
-
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -162,34 +153,31 @@
     const dataIdBeingDeleted = ref(null);
     const pageNumber         = ref(0);
 
-    const resetValueImage = () => {
-        $("#image").val(null);     
-    };
     const createDataSchema = yup.object({
-        title    : yup.string().required(),
-        is_active: yup.string().required(),
-        image    : yup.string().required(),
+        name    : yup.string().required(),
+        email   : yup.string().required(),
+        password: yup.string().required(),
     });
     const editDataSchema = yup.object({
-        title    : yup.string().required(),
-        is_active: yup.string().required(),
-        image    : null,
+        name    : yup.string().required(),
+        email   : yup.string().required(),
+        password: yup.string().required(),
     });
     const initForm = (data = null) => {
         if (data) {
             formValues.value = {
-                id       : data.id,
-                title    : data.title,
-                is_active: data.is_active,
-                image    : null,
+                id      : data.id,
+                name    : data.name,
+                email   : data.email,
+                password: data.password,
             };
             formImage.value = { image : data.image };            
         } else {
             formValues.value = {
-                id       : null,
-                title    : null,
-                is_active: null,
-                image    : null,
+                id      : null,
+                name    : null,
+                email   : null,
+                password: null,
             };
         }
     };
@@ -200,7 +188,7 @@
             page: page,
             search: searchQuery.value
         };
-        requestGet(`admin/partners`, queryParam)
+        requestGet(`admin/users`, queryParam)
         .then((RESPONSE) => {
             datas.value              = RESPONSE.data;
             dataLinkPagination.value = RESPONSE.data.meta.links;
@@ -220,7 +208,6 @@
         statusEditing.value = false;
         $('#modalForm').modal('show');
         initForm();
-        resetValueImage();
     };
     const createData = (values, { resetForm, setErrors }) => {
         const formData = new FormData();
@@ -230,7 +217,7 @@
             }
         });
 
-        requestPost('admin/partners/store', formData)
+        requestPost('admin/users/store', formData)
         .then((RESPONSE) => {
             datas.value.data.push(RESPONSE.data);
             $('#modalForm').modal('hide');
@@ -258,7 +245,7 @@
             }
         });                
         
-        requestPatch(`admin/partners/update/${formValues.value.id}`, { _method: 'PATCH'}, formData)
+        requestPatch(`admin/users/update/${formValues.value.id}`, { _method: 'PATCH'}, formData)
         .then((RESPONSE) => {
             const index = datas.value.data.findIndex(data => data.id === RESPONSE.data.id);
             datas.value.data[index] = RESPONSE.data;
@@ -274,7 +261,7 @@
         $('#modalDeleteForm').modal('show');
     };
     const deleteData = () => {
-        requestDelete(`admin/partners/destroy/${dataIdBeingDeleted.value}`)
+        requestDelete(`admin/users/destroy/${dataIdBeingDeleted.value}`)
         .then(() => {
             $('#modalDeleteForm').modal('hide');
             toastr.success('Data deleted successfully!');

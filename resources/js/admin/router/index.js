@@ -10,6 +10,7 @@ import PartnerList from '../pages/partners/PartnerList.vue';
 import HomeSettingList from '../pages/home_settings/HomeSettingList.vue';
 import ClientList from '../pages/clients/ClientList.vue';
 import QrCode from '../pages/qr-code/QrCode.vue'
+import Users from '../pages/users/UserList.vue'
 import useAuthStore from '../stores/auth';
 
 const routeForAdmin = [
@@ -27,6 +28,14 @@ const routeForAdmin = [
         component: Dashboard,
         meta: {
             title: 'Admin | Dashboard'
+        }
+    },
+    {
+        path: '/admin/users',
+        name: 'admin.users',
+        component: Users,
+        meta: {
+            title: 'Admin | Users'
         }
     },
     {
