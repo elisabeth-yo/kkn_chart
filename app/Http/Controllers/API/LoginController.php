@@ -13,11 +13,11 @@ use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
-    public function login(UserLoginRequest $request)
+    public function login(PenggunaLoginRequest $request)
     {
         $user = User::where('email', $request['email'])->first();
 
-        if (!$user || !Hash::check($request->password, $user->password)) {
+        if (!$user || !Hash::check($request->password, $pengguna->password)) {
             throw new HttpResponseException(response([
                 "errors" => [
                     "message" => [
@@ -27,12 +27,12 @@ class LoginController extends Controller
             ], 422));
         }
 
-        $token = $user->createToken('auth-token')->plainTextToken;
+        $token = $pengguna->createToken('auth-token')->plainTextToken;
 
         return response()->json([
             'message' => 'Success',
             'token' => $token,
-            'user' => new LoginResource($user)
+            'user' => new PenggunaLoginResource($pengguna)
         ], 201);
     }
 
