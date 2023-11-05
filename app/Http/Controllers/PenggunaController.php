@@ -16,7 +16,7 @@ class PenggunaController extends Controller
         $search = $request->search ?? null;
         
         $banyak_pengguna = Pengguna::when($request->has('search'), function ($query) use ($search) {
-                                $query->where('id', 'LIKE', '%' . $search . '%');
+                                $query->where('id_pengguna', 'LIKE', '%' . $search . '%');
                             })
                             ->paginate(10);
 
@@ -38,7 +38,7 @@ class PenggunaController extends Controller
 
             return response()->json([
                 'success' => true,
-                'message' => 'User created',
+                'message' => 'Pengguna berhasil dibuat',
                 'data' => new PenggunaResource($pengguna),
             ], 201);
 
@@ -59,7 +59,7 @@ class PenggunaController extends Controller
         if (!$pengguna)
             return response()->json([
                 'success' => false,
-                'message' => 'User not found',
+                'message' => 'Pengguna tidak ditemukan',
             ], 404);
 
         DB::beginTransaction();
@@ -78,7 +78,7 @@ class PenggunaController extends Controller
 
             return response()->json([
                 'success' => true,
-                'message' => 'User updated',
+                'message' => 'Pengguna berhasil diperbaharui',
                 'data' => new PenggunaResource($pengguna),
             ], 200);
 
@@ -99,7 +99,7 @@ class PenggunaController extends Controller
         if (!$pengguna)
             return response()->json([
                 'success' => false,
-                'message' => 'User not found',
+                'message' => 'Pengguna tidak ditemukan',
             ], 404);
 
         DB::beginTransaction();
@@ -113,7 +113,7 @@ class PenggunaController extends Controller
 
             return response()->json([
                 'success' => true,
-                'message' => 'User deleted',
+                'message' => 'Pengguna berhasil dihapus',
             ], 200);
 
         } catch (\Exception $e) {

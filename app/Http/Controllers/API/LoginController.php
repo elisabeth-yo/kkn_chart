@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UserLoginRequest;
-use App\Http\Resources\LoginResource;
-use App\Models\User;
+use App\Http\Requests\PenggunaLoginRequest;
+use App\Http\Resources\PenggunaLoginResource;
+use App\Models\Pengguna;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,13 +15,13 @@ class LoginController extends Controller
 {
     public function login(PenggunaLoginRequest $request)
     {
-        $user = User::where('email', $request['email'])->first();
+        $pengguna = Pengguna::where('email', $request['email'])->first();
 
-        if (!$user || !Hash::check($request->password, $pengguna->password)) {
+        if (!$pengguna || !Hash::check($request->password, $pengguna->password)) {
             throw new HttpResponseException(response([
                 "errors" => [
                     "message" => [
-                        "Email or password wrong"
+                        "Email atau password salah"
                     ]
                 ]
             ], 422));

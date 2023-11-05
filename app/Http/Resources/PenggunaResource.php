@@ -15,7 +15,6 @@ class PenggunaResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
             'id_pengguna' => $this->id_pengguna,
             'email' => $this->email,
             'password'=> $this->password,

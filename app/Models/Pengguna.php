@@ -2,14 +2,12 @@
 
 namespace App\Models;
 
-
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\Pengguna as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class Pengguna extends Model
+class Pengguna extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -18,8 +16,8 @@ class Pengguna extends Model
      *
      * @var array<int, string>
      */
+    protected $primaryKey = 'id_pengguna';
     protected $fillable = [
-        'id_pengguna',
         'email',
         'password',
         'profil_pengguna',
@@ -37,7 +35,7 @@ class Pengguna extends Model
         'remember_token',
     ];
 
-    /**
+      /**
      * The attributes that should be cast.
      *
      * @var array<string, string>
