@@ -57,10 +57,10 @@
                     </li>
 
                     <li class="nav-item">
-                        <router-link to="/admin/users" active-class="active" class="nav-link">
+                        <router-link to="/admin/pengguna" active-class="active" class="nav-link">
                             <i class="nav-icon fas fa-handshake"></i>
                             <p>
-                                Tambah Pengguna
+                                Pengguna
                             </p>
                         </router-link>
                     </li>

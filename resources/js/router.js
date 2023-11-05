@@ -56,6 +56,7 @@ const routes = [
         name: 'BecomeSupplier',
         component: BecomeSupplier
     },
+    
     {
         path: '/:pathMatch(.*)*',
         name: 'NotFound',

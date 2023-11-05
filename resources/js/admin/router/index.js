@@ -9,9 +9,10 @@ import BenefitList from '../pages/benefits/BenefitList.vue';
 import PartnerList from '../pages/partners/PartnerList.vue';
 import HomeSettingList from '../pages/home_settings/HomeSettingList.vue';
 import ClientList from '../pages/clients/ClientList.vue';
-import QrCode from '../pages/qr-code/QrCode.vue'
-import Users from '../pages/users/UserList.vue'
+import QrCode from '../pages/qr-code/QrCode.vue';
+import Users from '../pages/users/UserList.vue';
 import useAuthStore from '../stores/auth';
+import pengguna from '../pages/pengguna/pengguna.vue';
 
 const routeForAdmin = [
     {
@@ -36,6 +37,14 @@ const routeForAdmin = [
         component: Users,
         meta: {
             title: 'Admin | Users'
+        }
+    },
+    {
+        path: '/admin/pengguna',
+        name: 'admin.pengguna',
+        component: pengguna,
+        meta: {
+            title: 'Admin | Pengguna'
         }
     },
     {

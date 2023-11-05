@@ -52,9 +52,9 @@ class PenggunaController extends Controller
         }
     }
 
-    public function update(PenggunaUpdateRequest $request, $id)
+    public function update(PenggunaUpdateRequest $request, $id_pengguna)
     {
-        $pengguna = Pengguna::find($id);
+        $pengguna = Pengguna::find($id_pengguna);
 
         if (!$pengguna)
             return response()->json([
@@ -92,9 +92,9 @@ class PenggunaController extends Controller
         }
     }
 
-    public function destroy($id)
+    public function destroy($id_pengguna)
     {
-        $pengguna = Pengguna::find($id);
+        $pengguna = Pengguna::find($id_pengguna);
 
         if (!$pengguna)
             return response()->json([

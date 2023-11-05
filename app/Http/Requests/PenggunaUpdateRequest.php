@@ -28,7 +28,7 @@ class PenggunaUpdateRequest extends FormRequest
    public function rules()
    {
        return [
-        'id_pengguna' => ['required'],
+        // 'id_pengguna' => ['required'],
         'email' => ['required'],
         'password' => ['required'],
         'profil_pengguna' => ['required'],

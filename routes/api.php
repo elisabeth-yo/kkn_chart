@@ -11,6 +11,7 @@ use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SupplyController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PenggunaController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -66,6 +67,15 @@ Route::group(['prefix' => 'admin', 'middleware' => []], function () {
             Route::patch('/update/{userId}', [UserController::class, 'update'])->name('update');
             Route::delete('/destroy/{userId}', [UserController::class, 'destroy'])->name('destroy');
         });
+
+        Route::group(['prefix' => 'pengguna', 'as' => 'pengguna.', 'middleware' => []], function () {
+            Route::get('/', [PenggunaController::class, 'index'])->name('index');
+            Route::get('/{id_pengguna}', [PenggunaController::class, 'show'])->name('show');
+            Route::post('store', [PenggunaController::class, 'store'])->name('store');
+            Route::patch('/update/{id_pengguna}', [PenggunaController::class, 'update'])->name('update');
+            Route::delete('/destroy/{id_pengguna}', [PenggunaController::class, 'destroy'])->name('destroy');
+        });
+
 
         Route::group(['prefix' => 'clients', 'as' => 'clients.', 'middleware' => []], function () {
             Route::get('/', [ClientController::class, 'index'])->name('index');
