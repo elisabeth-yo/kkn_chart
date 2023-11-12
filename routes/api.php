@@ -12,6 +12,12 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SupplyController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PenggunaController;
+use App\Http\Controllers\WilayahController;
+use App\Http\Controllers\KategoriPenggunaController;
+use App\Http\Controllers\BeritaKegiatanController;
+use App\Http\Controllers\JadwalIbadahController;
+use App\Http\Controllers\WartaJemaatController;
+use App\Http\Controllers\PersembahanController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -74,6 +80,54 @@ Route::group(['prefix' => 'admin', 'middleware' => []], function () {
             Route::post('store', [PenggunaController::class, 'store'])->name('store');
             Route::patch('/update/{id_pengguna}', [PenggunaController::class, 'update'])->name('update');
             Route::delete('/destroy/{id_pengguna}', [PenggunaController::class, 'destroy'])->name('destroy');
+        });
+
+        Route::group(['prefix' => 'wilayah', 'as' => 'wilayah.', 'middleware' => []], function () {
+            Route::get('/', [WilayahController::class, 'index'])->name('index');
+            Route::get('/{id_wilayah}', [WilayahController::class, 'show'])->name('show');
+            Route::post('store', [WilayahController::class, 'store'])->name('store');
+            Route::patch('/update/{id_wilayah}', [WilayahController::class, 'update'])->name('update');
+            Route::delete('/destroy/{id_wilayah}', [WilayahController::class, 'destroy'])->name('destroy');
+        });
+
+        Route::group(['prefix' => 'kategoripengguna', 'as' => 'kategoripengguna.', 'middleware' => []], function () {
+            Route::get('/', [KategoriPenggunaController::class, 'index'])->name('index');
+            Route::get('/{id_kategori_pengguna}', [KategoriPenggunaController::class, 'show'])->name('show');
+            Route::post('store', [KategoriPenggunaController::class, 'store'])->name('store');
+            Route::patch('/update/{id_kategori_pengguna}', [KategoriPenggunaController::class, 'update'])->name('update');
+            Route::delete('/destroy/{id_kategori_pengguna}', [KategoriPenggunaController::class, 'destroy'])->name('destroy');
+        });
+
+        Route::group(['prefix' => 'beritakegiatan', 'as' => 'beritakegiatan.', 'middleware' => []], function () {
+            Route::get('/', [BeritaKegiatanController::class, 'index'])->name('index');
+            Route::get('/{id_berita}', [BeritaKegiatanController::class, 'show'])->name('show');
+            Route::post('store', [BeritaKegiatanController::class, 'store'])->name('store');
+            Route::patch('/update/{id_berita}', [BeritaKegiatanController::class, 'update'])->name('update');
+            Route::delete('/destroy/{id_berita}', [BeritaKegiatanController::class, 'destroy'])->name('destroy');
+        });
+
+        Route::group(['prefix' => 'jadwalibadah', 'as' => 'jadwalibadah.', 'middleware' => []], function () {
+            Route::get('/', [JadwalIbadahController::class, 'index'])->name('index');
+            Route::get('/{id_jadwal_ibadah}', [JadwalIbadahController::class, 'show'])->name('show');
+            Route::post('store', [JadwalIbadahController::class, 'store'])->name('store');
+            Route::patch('/update/{id_jadwal_ibadah}', [JadwalIbadahController::class, 'update'])->name('update');
+            Route::delete('/destroy/{id_jadwal_ibadah}', [JadwalIbadahController::class, 'destroy'])->name('destroy');
+        });
+
+        Route::group(['prefix' => 'wartajemaat', 'as' => 'wartajemaat.', 'middleware' => []], function () {
+            Route::get('/', [WartaJemaatController::class, 'index'])->name('index');
+            Route::get('/{id_jadwal_ibadah}', [WartaJemaatController::class, 'show'])->name('show');
+            Route::post('store', [WartaJemaatController::class, 'store'])->name('store');
+            Route::patch('/update/{id_warta}', [WartaJemaatController::class, 'update'])->name('update');
+            Route::delete('/destroy/{id_warta}', [WartaJemaatController::class, 'destroy'])->name('destroy');
+        });
+
+        Route::group(['prefix' => 'persembahan', 'as' => 'persembahan.', 'middleware' => []], function () {
+            Route::get('/', [PersembahanController::class, 'index'])->name('index');
+            Route::get('/{id_persembahan}', [PersembahanController::class, 'show'])->name('show');
+            Route::post('store', [PersembahanController::class, 'store'])->name('store');
+            Route::patch('/update/{id_persembahan}', [PersembahanController::class, 'update'])->name('update');
+            Route::delete('/destroy/{id_persembahan}', [PersembahanController::class, 'destroy'])->name('destroy');
         });
 
 

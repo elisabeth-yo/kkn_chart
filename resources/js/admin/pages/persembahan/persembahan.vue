@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Pengguna</h1>
+                    <h1 class="m-0">Persembahan</h1>
                 </div>
             </div>
         </div>
@@ -16,7 +16,7 @@
                 <div class="d-flex">
                     <button @click="add" type="button" class="mb-2 btn btn-primary">
                         <i class="fa fa-plus-circle mr-1"></i>
-                        Tambah Pengguna
+                        Tambah Persembahan
                     </button>
                 </div>
                 <div>
@@ -29,28 +29,27 @@
                         <thead>
                             <tr>
                                 <th style="width: 10px">#</th>
+                                <th>Id Persembahan</th>
+                                <th>Perolehan Persembahan</th>
+                                <th>Keterangan</th>
+                                <th>Id Jadwal Ibadah</th>
                                 <th>Id Pengguna</th>
-                                <th>Email</th>
-                                <th>Password</th>
-                                <th>Profil Pengguna</th>
-                                <th>Id Kategori Pengguna</th>
-                                <th>Id Data Jemaat</th>
-                                <th>Opsi</th>
                             </tr>
                         </thead>
                         <tbody v-if="datas.data.length > 0" class="tbody-">
                             <tr v-for="(data, index) in datas.data" :key="index">                                    
                                 <td v-if="pageNumber > 1">{{ pageNumber - 1 }}{{ index + 1 }}</td>
                                 <td v-else>{{ index + 1 }}</td>
+                                <td>{{ data.id_persembahan }}</td>
+                                <td>Rp  {{ data.perolehan_persembahan }}</td>
+                                <td>{{ data.keterangan }}</td>
+                                <td>{{ data.id_jadwal_ibadah }}</td>
                                 <td>{{ data.id_pengguna }}</td>
-                                <td>{{ data.email }}</td>
-                                <td>{{ data.password }}</td>
-                                <td>{{ data.profil_pengguna }}</td>
-                                <td>{{ data.id_kategori_pengguna }}</td>
-                                <td>{{ data.id_data_jemaat }}</td>
+                                
+                               
                                 <td>
                                     <a href="#" @click.prevent="edit(data)"><i class="fa fa-edit"></i></a>
-                                    <a href="#" @click.prevent="confirmDeletion(data.id_pengguna)"><i class="fa fa-trash text-danger ml-2"></i></a>
+                                    <a href="#" @click.prevent="confirmDeletion(data.id_persembahan)"><i class="fa fa-trash text-danger ml-2"></i></a>
                                 </td>
                             </tr>
                         </tbody>
@@ -76,8 +75,8 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="staticBackdropLabel">
-                        <span v-if="statusEditing">Edit Pengguna</span>
-                        <span v-else>Tambah Pengguna</span>
+                        <span v-if="statusEditing">Edit Persembahan</span>
+                        <span v-else>Tambah Persembahan</span>
                     </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -86,41 +85,35 @@
                 <Form ref="form" @submit="handleSubmit" :validation-schema="statusEditing ? editDataSchema : createDataSchema" v-slot="{ errors }" :initial-values="formValues">
                     <div class="modal-body">
                         
-                        <!-- <div class="form-group">
+                        
+
+                        <div class="form-group">
+                            <label for="perolehan_persembahan">Perolehan Persembahan</label>
+                            <Field name="perolehan_persembahan" type="text" class="form-control" :class="{ 'is-invalid': errors.perolehan_persembahan }" id="perolehan_persembahan"/>
+                            <span class="invalid-feedback">{{ errors.perolehan_persembahan }}</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="keterangan">Keterangan</label>
+                            <Field name="keterangan" as="textarea" class="form-control" :class="{ 'is-invalid': errors.keterangan }" id="keterangan" cols="30" rows="10"/>
+                            <span class="invalid-feedback">{{ errors.keterangan }}</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="id_jadwal_ibadah">Id Jadwal Ibadah</label>
+                            <Field name="id_jadwal_ibadah" type="text" class="form-control" :class="{ 'is-invalid': errors.id_jadwal_ibadah }" id="id_jadwal_ibadah" />
+                            <span class="invalid-feedback">{{ errors.id_jadwal_ibadah }}</span>
+                        </div>
+                        
+
+                        <div class="form-group">
                             <label for="id_pengguna">Id Pengguna</label>
                             <Field name="id_pengguna" type="text" class="form-control" :class="{ 'is-invalid': errors.id_pengguna }" id="id_pengguna" />
                             <span class="invalid-feedback">{{ errors.id_pengguna }}</span>
-                        </div> -->
-
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <Field name="email" type="email" class="form-control" :class="{ 'is-invalid': errors.email }" id="email"/>
-                            <span class="invalid-feedback">{{ errors.email }}</span>
                         </div>
+
                         
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <Field name="password" type="password" class="form-control" :class="{ 'is-invalid': errors.password }" id="password"/>
-                            <span class="invalid-feedback">{{ errors.password }}</span>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="profil_pengguna">Profil Pengguna</label>
-                            <Field name="profil_pengguna" as="textarea" class="form-control" :class="{ 'is-invalid': errors.profil_pengguna }" id="profil_pengguna" cols="30" rows="10" />
-                            <span class="invalid-feedback">{{ errors.profil_pengguna }}</span>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="id_kategori_pengguna">Id Kategori Pengguna</label>
-                            <Field name="id_kategori_pengguna" type="text" class="form-control" :class="{ 'is-invalid': errors.id_kategori_pengguna}" id="id_kategori_pengguna" />
-                            <span class="invalid-feedback">{{ errors.id_kategori_pengguna }}</span>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="id_data_jemaat">Id Data Jemaat</label>
-                            <Field name="id_data_jemaat" type="text" class="form-control" :class="{ 'is-invalid': errors.id_data_jemaat}" id="id_data_jemaat" />
-                            <span class="invalid-feedback">{{ errors.id_data_jemaat }}</span>
-                        </div>
+                        
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -174,44 +167,50 @@
     const statusEditing      = ref(false);
     const form               = ref(null);
     const formValues         = ref(null);
-    const formImage          = ref(null);
+    const formFile          = ref(null);
+    
     const dataIdBeingDeleted = ref(null);
     const pageNumber         = ref(0);
+    const resetValueImage    = () => {
+        $ ("#file_warta").val(null);
+       
+
+    };
+    
 
     const createDataSchema = yup.object({
-        email               : yup.string().required(),
-        password            : yup.string().required(),
-        profil_pengguna     : yup.string().required(),
-        id_kategori_pengguna: yup.string().required(),
-        id_data_jemaat      : yup.string().required(),
+        perolehan_persembahan       : yup.string().required(),
+        keterangan                  : yup.string().required(),
+        id_jadwal_ibadah            : yup.string().required(),
+        id_pengguna                 : yup.string().required(),
+       
     });
     const editDataSchema = yup.object({ 
-        email               : yup.string().required(),
-        password            : yup.string().required(),
-        profil_pengguna     : yup.string().required(),
-        id_kategori_pengguna: yup.string().required(),
-        id_data_jemaat      : yup.string().required(),
+        perolehan_persembahan       : yup.string().required(),
+        keterangan                  : yup.string().required(),
+        id_jadwal_ibadah            : yup.string().required(),
+        id_pengguna                 : yup.string().required(),
     });
     const initForm = (data = null) => {
         if (data) {
             formValues.value = {
-                id_pengguna            : data.id_pengguna,
-                email                  : data.email,
-                password               : data.password,
-                profil_pengguna        : data.profil_pengguna,
-                id_kategori_pengguna   : data.id_kategori_pengguna,
-                id_data_jemaat         : data.id_data_jemaat,
+                id_persembahan          : data.id_persembahan,
+                perolehan_persembahan   : data.perolehan_persembahan,
+                keterangan              : data.keterangan,
+                id_jadwal_ibadah        : data.id_jadwal_ibadah,
+                id_pengguna             : data.id_pengguna,
+               
             };
-            formImage.value = { image : data.image };            
+            
+                        
         } else {
             formValues.value = {
-               
-                id_pengguna            : null,
-                email                  : null,
-                password               : null,
-                profil_pengguna        : null,
-                id_kategori_pengguna   : null,
-                id_data_jemaat         : null,
+                id_persembahan          : null,
+                perolehan_persembahan   : null,
+                keterangan              : null,
+                id_jadwal_ibadah        : null,
+                id_pengguna             : null,
+                
             };
         }
     };
@@ -222,7 +221,7 @@
             page: page,
             search: searchQuery.value
         };
-        requestGet(`admin/pengguna`, queryParam)
+        requestGet(`admin/persembahan`, queryParam)
         .then((RESPONSE) => {
             datas.value              = RESPONSE.data;
             dataLinkPagination.value = RESPONSE.data.meta.links;
@@ -242,16 +241,17 @@
         statusEditing.value = false;
         $('#modalForm').modal('show');
         initForm();
+        resetValueImage();
     };
     const createData = (values, { resetForm, setErrors }) => {
         const formData = new FormData();
         Object.keys(values).forEach(key => {
-            if (key !== 'id_pengguna') {
+            if (key !== 'id_persembahan') {
                 formData.append(key, values[key]);
             }
         });
 
-        requestPost('admin/pengguna/store', formData)
+        requestPost('admin/persembahan/store', formData)
         .then((RESPONSE) => {
             datas.value.data.push(RESPONSE.data);
             $('#modalForm').modal('hide');
@@ -270,18 +270,19 @@
         $('#modalForm').modal('show');
         initForm(data);
         resetValueImage();
+        
     };
     const updateData = (values, { resetForm, setErrors }) => {
         const formData = new FormData();
         Object.keys(values).forEach(key => {
-            if (values[key] && key !== 'id_pengguna') {
+            if (values[key] && key !== 'id_persembahan') {
                 formData.append(key, values[key])                
             }
         });                
         
-        requestPatch(`admin/pengguna/update/${formValues.value.id_pengguna}`, { _method: 'PATCH'}, formData)
+        requestPatch(`admin/persembahan/update/${formValues.value.id_persembahan}`, { _method: 'PATCH'}, formData)
         .then((RESPONSE) => {
-            const index = datas.value.data.findIndex(data => data.id_pengguna === RESPONSE.data.id_pengguna);
+            const index = datas.value.data.findIndex(data => data.id_persembahan === RESPONSE.data.id_persembahan);
             datas.value.data[index] = RESPONSE.data;
             resetForm();
             $('#modalForm').modal('hide');
@@ -290,16 +291,16 @@
             setErrors(error.response.data.errors);
         });
     };
-    const confirmDeletion = (id_pengguna) => {
-        dataIdBeingDeleted.value = id_pengguna;
+    const confirmDeletion = (id_persembahan) => {
+        dataIdBeingDeleted.value = id_persembahan;
         $('#modalDeleteForm').modal('show');
     };
     const deleteData = () => {
-        requestDelete(`admin/pengguna/destroy/${dataIdBeingDeleted.value}`)
+        requestDelete(`admin/persembahan/destroy/${dataIdBeingDeleted.value}`)
         .then(() => {
             $('#modalDeleteForm').modal('hide');
             toastr.success('Data deleted successfully!');
-            datas.value.data = datas.value.data.filter(data => data.id_pengguna !== dataIdBeingDeleted.value);
+            datas.value.data = datas.value.data.filter(data => data.id_persembahan !== dataIdBeingDeleted.value);
         }).catch((error) => {
             setErrors(error.response.data.errors);
         });

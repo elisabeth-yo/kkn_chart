@@ -2,44 +2,44 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\PenggunaRequest;
-use App\Http\Requests\PenggunaUpdateRequest;
-use App\Http\Resources\PenggunaResource;
-use App\Models\Pengguna;
+use App\Http\Requests\WilayahRequest;
+use App\Http\Requests\WilayahUpdateRequest;
+use App\Http\Resources\WilayahResource;
+use App\Models\Wilayah;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class PenggunaController extends Controller
+class WilayahController extends Controller
 {
     public function index(Request $request)
     {
         $search = $request->search ?? null;
         
-        $banyak_pengguna = Pengguna::when($request->has('search'), function ($query) use ($search) {
-                                $query->where('profil_pengguna', 'LIKE', '%' . $search . '%');
+        $banyak_wilayah = Wilayah::when($request->has('search'), function ($query) use ($search) {
+                                $query->where('nama_wilayah', 'LIKE', '%' . $search . '%');
                             })
                             ->paginate(10);
 
         return response()->json([
             'success' => true,
-            'data' => PenggunaResource::collection($banyak_pengguna)->response()->getData(true),
+            'data' => WilayahResource::collection($banyak_wilayah)->response()->getData(true),
         ], 200);
     }
 
-    public function store(PenggunaRequest $request)
+    public function store(WilayahRequest $request)
     {
         DB::beginTransaction();
 
         try {
             $input = $request->toArray();
-            $pengguna = Pengguna::create($input);
+            $wilayah = Wilayah::create($input);
             
             DB::commit();
 
             return response()->json([
                 'success' => true,
-                'message' => 'Pengguna berhasil dibuat',
-                'data' => new PenggunaResource($pengguna),
+                'message' => 'Wilayah berhasil dibuat',
+                'data' => new WilayahResource($wilayah),
             ], 201);
 
         } catch (\Exception $e) {
@@ -52,14 +52,14 @@ class PenggunaController extends Controller
         }
     }
 
-    public function update(PenggunaUpdateRequest $request, $id_pengguna)
+    public function update(WilayahUpdateRequest $request, $id_wilayah)
     {
-        $pengguna = Pengguna::find($id_pengguna);
+        $wilayah = Wilayah::find($id_wilayah);
 
-        if (!$pengguna)
+        if (!$wilayah)
             return response()->json([
                 'success' => false,
-                'message' => 'Pengguna tidak ditemukan',
+                'message' => 'Wilayah tidak ditemukan',
             ], 404);
 
         DB::beginTransaction();
@@ -68,18 +68,18 @@ class PenggunaController extends Controller
             $input = $request->toArray();
             
             if ($request->image) {
-                handleDeletedImage($pengguna->image);
-                $input['image'] = handleUploadedImage($request->image, 'Pengguna/');
+                handleDeletedImage($wilayah->image);
+                $input['image'] = handleUploadedImage($request->image, 'Wilayah/');
             }
 
-            $pengguna->update($input);
+            $wilayah->update($input);
             
             DB::commit();
 
             return response()->json([
                 'success' => true,
-                'message' => 'Pengguna berhasil diperbaharui',
-                'data' => new PenggunaResource($pengguna),
+                'message' => 'Wilayah berhasil diperbaharui',
+                'data' => new WilayahResource($wilayah),
             ], 200);
 
         } catch (\Exception $e) {
@@ -92,28 +92,28 @@ class PenggunaController extends Controller
         }
     }
 
-    public function destroy($id_pengguna)
+    public function destroy($id_wilayah)
     {
-        $pengguna = Pengguna::find($id_pengguna);
+        $wilayah = Wilayah::find($id_wilayah);
 
-        if (!$pengguna)
+        if (!$wilayah)
             return response()->json([
                 'success' => false,
-                'message' => 'Pengguna tidak ditemukan',
+                'message' => 'Wilayah tidak ditemukan',
             ], 404);
 
         DB::beginTransaction();
 
         try {
-            handleDeletedImage($pengguna->image);
+            handleDeletedImage($wilayah->image);
 
-            $pengguna->delete();
+            $wilayah->delete();
             
             DB::commit();
 
             return response()->json([
                 'success' => true,
-                'message' => 'Pengguna berhasil dihapus',
+                'message' => 'Wilayah berhasil dihapus',
             ], 200);
 
         } catch (\Exception $e) {

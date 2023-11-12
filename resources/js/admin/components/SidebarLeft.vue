@@ -65,6 +65,60 @@
                         </router-link>
                     </li>
 
+                    <li class="nav-item">
+                        <router-link to="/admin/wilayah" active-class="active" class="nav-link">
+                            <i class="nav-icon fas fa-handshake"></i>
+                            <p>
+                                Wilayah
+                            </p>
+                        </router-link>
+                    </li>
+
+                    <li class="nav-item">
+                        <router-link to="/admin/kategoripengguna" active-class="active" class="nav-link">
+                            <i class="nav-icon fas fa-handshake"></i>
+                            <p>
+                                Kategori Pengguna
+                            </p>
+                        </router-link>
+                    </li>
+
+                    <li class="nav-item">
+                        <router-link to="/admin/beritakegiatan" active-class="active" class="nav-link">
+                            <i class="nav-icon fas fa-handshake"></i>
+                            <p>
+                                Berita Kegiatan
+                            </p>
+                        </router-link>
+                    </li>
+
+                    <li class="nav-item">
+                        <router-link to="/admin/jadwalibadah" active-class="active" class="nav-link">
+                            <i class="nav-icon fas fa-handshake"></i>
+                            <p>
+                                Jadwal Ibadah
+                            </p>
+                        </router-link>
+                    </li>
+
+                    <li class="nav-item">
+                        <router-link to="/admin/wartajemaat" active-class="active" class="nav-link">
+                            <i class="nav-icon fas fa-handshake"></i>
+                            <p>
+                                Warta Jemaat
+                            </p>
+                        </router-link>
+                    </li>
+
+                    <li class="nav-item">
+                        <router-link to="/admin/persembahan" active-class="active" class="nav-link">
+                            <i class="nav-icon fas fa-handshake"></i>
+                            <p>
+                                Persembahan
+                            </p>
+                        </router-link>
+                    </li>
+
                     <!-- <li class="nav-item">
                         <router-link to="/admin/clients" active-class="active" class="nav-link">
                             <i class="nav-icon fas fa-user-tie"></i>

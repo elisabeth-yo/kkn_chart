@@ -1,0 +1,55 @@
+<?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
+
+class BeritaKegiatanRequest extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, mixed>
+     */
+    public function rules()
+    {
+        return [
+            'nama_kegiatan' => ['required'], 
+            'deskripsi_kegiatan' => ['required'], 
+            'tanggal_pelaksanaan' => ['required'], 
+            'poster_kegiatan' => ['required','image', 'mimes:jpeg,png,jpg'],
+            'foto_kegiatan' => ['required','image', 'mimes:jpeg,png,jpg'],
+            'id_pengguna' => ['required'], 
+           
+        ];
+    }
+
+    // protected function failedValidation(Validator $validator)
+    // {
+    //     throw new HttpResponseException(response ([
+    //         "errors" => $validator->getMessageBag()
+    //     ], 400));
+    // }
+
+    /**
+     * Configure the validator instance.
+     *
+     * @param  \Illuminate\Validation\Validator  $validator
+     * @return void
+     */
+    
+}

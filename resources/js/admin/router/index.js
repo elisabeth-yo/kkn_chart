@@ -13,6 +13,12 @@ import QrCode from '../pages/qr-code/QrCode.vue';
 import Users from '../pages/users/UserList.vue';
 import useAuthStore from '../stores/auth';
 import pengguna from '../pages/pengguna/pengguna.vue';
+import wilayah from '../pages/wilayah/wilayah.vue';
+import kategoripengguna from '../pages/kategoripengguna/kategoripengguna.vue';
+import beritakegiatan from '../pages/beritakegiatan/beritakegiatan.vue';
+import jadwalibadah from '../pages/jadwalibadah/jadwalibadah.vue';
+import wartajemaat from '../pages/wartajemaat/wartajemaat.vue';
+import persembahan from '../pages/persembahan/persembahan.vue';
 
 const routeForAdmin = [
     {
@@ -45,6 +51,54 @@ const routeForAdmin = [
         component: pengguna,
         meta: {
             title: 'Admin | Pengguna'
+        }
+    },
+    {
+        path: '/admin/wilayah',
+        name: 'admin.wilayah',
+        component: wilayah,
+        meta: {
+            title: 'Admin | Wilayah'
+        }
+    },
+    {
+        path: '/admin/kategoripengguna',
+        name: 'admin.kategoripengguna',
+        component: kategoripengguna,
+        meta: {
+            title: 'Admin | Kategori Pengguna'
+        }
+    },
+    {
+        path: '/admin/beritakegiatan',
+        name: 'admin.beritakegiatan',
+        component: beritakegiatan,
+        meta: {
+            title: 'Admin | Berita Kegiatan'
+        }
+    },
+    {
+        path: '/admin/jadwalibadah',
+        name: 'admin.jadwalibadah',
+        component: jadwalibadah,
+        meta: {
+            title: 'Admin | Jadwal Ibadah'
+        }
+    },
+    {
+        path: '/admin/wartajemaat',
+        name: 'admin.wartajemaat',
+        component: wartajemaat,
+        meta: {
+            title: 'Admin | Warta Jemaat'
+        }
+    },
+    {
+        path: '/admin/persembahan',
+        name: 'admin.persembahan',
+        component: persembahan,
+        meta: {
+            title: 'Admin | Persembahan'
         }
     },
     {

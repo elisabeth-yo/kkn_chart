@@ -2,44 +2,45 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\PenggunaRequest;
-use App\Http\Requests\PenggunaUpdateRequest;
-use App\Http\Resources\PenggunaResource;
-use App\Models\Pengguna;
+use App\Http\Requests\PersembahanRequest;
+use App\Http\Requests\PersembahanUpdateRequest;
+use App\Http\Resources\PersembahanResource;
+use App\Models\Persembahan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class PenggunaController extends Controller
+class PersembahanController extends Controller
 {
     public function index(Request $request)
     {
         $search = $request->search ?? null;
         
-        $banyak_pengguna = Pengguna::when($request->has('search'), function ($query) use ($search) {
-                                $query->where('profil_pengguna', 'LIKE', '%' . $search . '%');
+        $banyak_persembahan = Persembahan::when($request->has('search'), function ($query) use ($search) {
+                                $query->where('id_persembahan', 'LIKE', '%' . $search . '%');
                             })
                             ->paginate(10);
 
         return response()->json([
             'success' => true,
-            'data' => PenggunaResource::collection($banyak_pengguna)->response()->getData(true),
+            'data' => PersembahanResource::collection($banyak_persembahan)->response()->getData(true),
         ], 200);
     }
 
-    public function store(PenggunaRequest $request)
+    public function store(PersembahanRequest $request)
     {
         DB::beginTransaction();
 
         try {
             $input = $request->toArray();
-            $pengguna = Pengguna::create($input);
+            
+            $persembahan = Persembahan::create($input);
             
             DB::commit();
 
             return response()->json([
                 'success' => true,
-                'message' => 'Pengguna berhasil dibuat',
-                'data' => new PenggunaResource($pengguna),
+                'message' => 'Persembahan berhasil dibuat',
+                'data' => new PersembahanResource($persembahan),
             ], 201);
 
         } catch (\Exception $e) {
@@ -52,14 +53,14 @@ class PenggunaController extends Controller
         }
     }
 
-    public function update(PenggunaUpdateRequest $request, $id_pengguna)
+    public function update(PersembahanUpdateRequest $request, $id_persembahan)
     {
-        $pengguna = Pengguna::find($id_pengguna);
+        $persembahan = Persembahan::find($id_persembahan);
 
-        if (!$pengguna)
+        if (!$persembahan )
             return response()->json([
                 'success' => false,
-                'message' => 'Pengguna tidak ditemukan',
+                'message' => 'Persembahan tidak ditemukan',
             ], 404);
 
         DB::beginTransaction();
@@ -67,19 +68,16 @@ class PenggunaController extends Controller
         try {
             $input = $request->toArray();
             
-            if ($request->image) {
-                handleDeletedImage($pengguna->image);
-                $input['image'] = handleUploadedImage($request->image, 'Pengguna/');
-            }
+            
 
-            $pengguna->update($input);
+            $persembahan ->update($input);
             
             DB::commit();
 
             return response()->json([
                 'success' => true,
-                'message' => 'Pengguna berhasil diperbaharui',
-                'data' => new PenggunaResource($pengguna),
+                'message' => 'Persembahan berhasil diperbaharui',
+                'data' => new PersembahanResource($persembahan ),
             ], 200);
 
         } catch (\Exception $e) {
@@ -92,28 +90,28 @@ class PenggunaController extends Controller
         }
     }
 
-    public function destroy($id_pengguna)
+    public function destroy($id_persembahan)
     {
-        $pengguna = Pengguna::find($id_pengguna);
+        $persembahan = Persembahan::find($id_persembahan);
 
-        if (!$pengguna)
+        if (!$persembahan )
             return response()->json([
                 'success' => false,
-                'message' => 'Pengguna tidak ditemukan',
+                'message' => 'Persembahan tidak ditemukan',
             ], 404);
 
         DB::beginTransaction();
 
         try {
-            handleDeletedImage($pengguna->image);
+           
 
-            $pengguna->delete();
+            $persembahan ->delete();
             
             DB::commit();
 
             return response()->json([
                 'success' => true,
-                'message' => 'Pengguna berhasil dihapus',
+                'message' => 'Persembahan berhasil dihapus',
             ], 200);
 
         } catch (\Exception $e) {

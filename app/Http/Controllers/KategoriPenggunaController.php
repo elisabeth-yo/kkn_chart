@@ -2,44 +2,44 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\PenggunaRequest;
-use App\Http\Requests\PenggunaUpdateRequest;
-use App\Http\Resources\PenggunaResource;
-use App\Models\Pengguna;
+use App\Http\Requests\KategoriPenggunaRequest;
+use App\Http\Requests\KategoriPenggunaUpdateRequest;
+use App\Http\Resources\KategoriPenggunaResource;
+use App\Models\KategoriPengguna;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class PenggunaController extends Controller
+class KategoriPenggunaController extends Controller
 {
     public function index(Request $request)
     {
         $search = $request->search ?? null;
         
-        $banyak_pengguna = Pengguna::when($request->has('search'), function ($query) use ($search) {
-                                $query->where('profil_pengguna', 'LIKE', '%' . $search . '%');
+        $banyak_kategori_pengguna = KategoriPengguna::when($request->has('search'), function ($query) use ($search) {
+                                $query->where('jenis_pengguna', 'LIKE', '%' . $search . '%');
                             })
                             ->paginate(10);
 
         return response()->json([
             'success' => true,
-            'data' => PenggunaResource::collection($banyak_pengguna)->response()->getData(true),
+            'data' => KategoriPenggunaResource::collection($banyak_kategori_pengguna)->response()->getData(true),
         ], 200);
     }
 
-    public function store(PenggunaRequest $request)
+    public function store(KategoriPenggunaRequest $request)
     {
         DB::beginTransaction();
 
         try {
             $input = $request->toArray();
-            $pengguna = Pengguna::create($input);
+            $kategoripengguna = KategoriPengguna::create($input);
             
             DB::commit();
 
             return response()->json([
                 'success' => true,
-                'message' => 'Pengguna berhasil dibuat',
-                'data' => new PenggunaResource($pengguna),
+                'message' => 'Kategori Pengguna berhasil dibuat',
+                'data' => new KategoriPenggunaResource($kategoripengguna),
             ], 201);
 
         } catch (\Exception $e) {
@@ -52,14 +52,14 @@ class PenggunaController extends Controller
         }
     }
 
-    public function update(PenggunaUpdateRequest $request, $id_pengguna)
+    public function update(KategoriPenggunaUpdateRequest $request, $id_kategori_pengguna)
     {
-        $pengguna = Pengguna::find($id_pengguna);
+        $kategoripengguna = KategoriPengguna::find($id_kategori_pengguna);
 
-        if (!$pengguna)
+        if (!$kategoripengguna )
             return response()->json([
                 'success' => false,
-                'message' => 'Pengguna tidak ditemukan',
+                'message' => 'Kategori Pengguna tidak ditemukan',
             ], 404);
 
         DB::beginTransaction();
@@ -68,18 +68,18 @@ class PenggunaController extends Controller
             $input = $request->toArray();
             
             if ($request->image) {
-                handleDeletedImage($pengguna->image);
-                $input['image'] = handleUploadedImage($request->image, 'Pengguna/');
+                handleDeletedImage($kategoripengguna ->image);
+                $input['image'] = handleUploadedImage($request->image, 'Kategoripengguna/');
             }
 
-            $pengguna->update($input);
+            $kategoripengguna ->update($input);
             
             DB::commit();
 
             return response()->json([
                 'success' => true,
-                'message' => 'Pengguna berhasil diperbaharui',
-                'data' => new PenggunaResource($pengguna),
+                'message' => 'Kategori Pengguna berhasil diperbaharui',
+                'data' => new KategoriPenggunaResource($kategoripengguna ),
             ], 200);
 
         } catch (\Exception $e) {
@@ -92,28 +92,28 @@ class PenggunaController extends Controller
         }
     }
 
-    public function destroy($id_pengguna)
+    public function destroy($id_kategori_pengguna)
     {
-        $pengguna = Pengguna::find($id_pengguna);
+        $kategoripengguna = KategoriPengguna::find($id_kategori_pengguna);
 
-        if (!$pengguna)
+        if (!$kategoripengguna )
             return response()->json([
                 'success' => false,
-                'message' => 'Pengguna tidak ditemukan',
+                'message' => 'Kategori Pengguna tidak ditemukan',
             ], 404);
 
         DB::beginTransaction();
 
         try {
-            handleDeletedImage($pengguna->image);
+            handleDeletedImage($kategoripengguna ->image);
 
-            $pengguna->delete();
+            $kategoripengguna ->delete();
             
             DB::commit();
 
             return response()->json([
                 'success' => true,
-                'message' => 'Pengguna berhasil dihapus',
+                'message' => 'Kategori Pengguna berhasil dihapus',
             ], 200);
 
         } catch (\Exception $e) {
