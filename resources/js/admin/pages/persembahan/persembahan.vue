@@ -41,7 +41,7 @@
                                 <td v-if="pageNumber > 1">{{ pageNumber - 1 }}{{ index + 1 }}</td>
                                 <td v-else>{{ index + 1 }}</td>
                                 <td>{{ data.id_persembahan }}</td>
-                                <td>Rp  {{ data.perolehan_persembahan }}</td>
+                                <td>Rp {{ data.perolehan_persembahan }}</td>
                                 <td>{{ data.keterangan }}</td>
                                 <td>{{ data.id_jadwal_ibadah }}</td>
                                 <td>{{ data.id_pengguna }}</td>

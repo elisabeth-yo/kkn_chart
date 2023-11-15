@@ -46,8 +46,8 @@
                                 <td>{{ data.nama_kegiatan }}</td>
                                 <td>{{ data.deskripsi_kegiatan }}</td>
                                 <td>{{ data.tanggal_pelaksanaan }}</td>
-                                <td><img :src="data.poster_kegiatan" :alt="data.nama_kegiatan" class="img"></td>
-                                <td><img :src="data.foto_kegiatan" :alt="data.nama_kegiatan" class="img"></td>
+                                <td><a :href="data.poster_kegiatan" class="img"><img :src="data.poster_kegiatan" :alt="data.nama_kegiatan" class="img"></a></td>
+                                <td><a :href="data.foto_kegiatan" class="img"><img :src="data.foto_kegiatan" :alt="data.nama_kegiatan" class="img"></a></td>
                                 <td>{{ data.id_pengguna }}</td>
                                 
                                 <td>

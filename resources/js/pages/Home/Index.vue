@@ -1,416 +1,179 @@
 <template>
-  <section class="ebiz__hero_slider">
-    <swiper
-      :navigation="true"
-      :modules="modules"
-      :autoplay="{
-        delay: 2500,
-        disableOnInteraction: false,
-      }"
-    >
-      <!-- <swiper-slide>
-        <div class="position-relative">
-          <img src="/assets/images/hero-ebiz.png" class="w-100" />
-          <div
-            class="position-absolute d-flex align-items-start justify-content-center w-100"
-            style="top: 35%;"
-          >
-            <div class="col-lg-6 col-8 text-center mx-auto">
-              <div
-                class="text-p-white font-weight-600 font-size-lg-22 font-size-md-20 font-size-sm-16 font-size-10"
-              >
-                Smart business buying starts here
-              </div>
-              <div
-                class="text-p-white font-weight-400 font-size-lg-16 font-size-md-12 font-size-sm-10 font-size-6 mt-lg-3 mt-md-2"
-              >
-                Elevenia.Biz realizes that all businesses and businesses have
-                different challenges. Therefore, we are here to bring various
-                solutions to answer all your business and business challenges.
-              </div>
-            </div>
-          </div>
-        </div>
-      </swiper-slide> -->
-      <swiper-slide v-for="(item, index) in  hero_header">
-        <img :src="item.image" class="w-100" />
-      </swiper-slide>
-    </swiper>
-  </section>
-  <section class="mt-4">
-    <div class="container">
-      <div class="text-center font-size-24 font-weight-600 text-p-blue-24">
-        Why Choose Me
-      </div>
-      <div class="">
-        <div class="row align-items-center">
-          <div class="col-xl-5 col-lg-6">
-            <div class="text-center">
-              <img
-                src="/assets/images/asset-left-home.svg"
-                style="width: 100%;"
-              />
-            </div>
-          </div>
-          <div class="col-xl-7 col-lg-6">
-            <div class="row p-xl-4 g-4">
-              <div v-for="(item, index) in why_choose_me" class="col-sm-6">
-                <div
-                  class="bg-p-grey-58 px-4 py-2 radius-10 hover-bg-p-blue-25"
-                >
-                  <div class="hstack align-items-center gap-4">
-                    <div>
-                      <img :src="item.image" style="max-width: 39px;" />
-                    </div>
-                    <div>
-                      <div class="font-weight-500 font-size-16">
-                        {{ item.title }}
-                      </div>
-                      <div class="font-weight-400 font-size-12">
-                        {{ item.content }}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="mt-5">
-    <div class="text-center font-size-24 font-weight-600 text-p-blue-24 my-5">
-      How To Order
-    </div>
-    <swiper
-      :slidesPerView="3"
-      :spaceBetween="10"
-      :freeMode="true"
-      :autoplay="{
-        delay: 2500,
-        disableOnInteraction: false,
-      }"
-      :breakpoints="{
-        320: {
-          slidesPerView: 1,
-          spaceBetween: 50,
-        },
-        430: {
-          slidesPerView: 1,
-          spaceBetween: 10,
-        },
-        480: {
-          slidesPerView: 1,
-          spaceBetween: 10,
-        },
-        512: {
-          slidesPerView: 1,
-          spaceBetween: 50,
-        },
-        659: {
-          slidesPerView: 2,
-          spaceBetween: 300,
-        },
-        699: {
-          slidesPerView: 2,
-          spaceBetween: 200,
-        },
-        933: {
-          slidesPerView: 2,
-          spaceBetween: 20,
-        },
-        1025: {
-          slidesPerView: 2,
-          spaceBetween: 20,
-        },
-        1290: {
-          slidesPerView: 3,
-          spaceBetween: 10,
-        },
-        1336: {
-          slidesPerView: 3,
-          spaceBetween: 10,
-        },
-      }"
-      :modules="modules"
-      class="ebiz_slider__card"
-    >
-      <swiper-slide v-for="(item, index) in how_to_order">
-        <div
-          class="ebiz_item_slider__card bg-p-blue-24 p-4 hstack align-items-center justify-content-center text-center radius-10"
-          style="
-            width: 350px;
-            height: 418px;
-            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-          "
-        >
-          <div>
-            <div>
-              <img :src="item.image" style="max-width: 90px;" />
-              <div class="font-weight-700 font-size-24 text-p-white">
-                {{ item.title }}
-              </div>
-            </div>
-            <div class="mt-4">
-              <div class="font-weight-400 font-size-16 text-p-white">
-                {{ item.content }}
-              </div>
-            </div>
-          </div>
-        </div>
-      </swiper-slide>
-    </swiper>
-  </section>
-  <section class="mt-5">
-    <div class="container">
-      <div class="row align-items-center g-5">
-        <div class="col-md-4">
-          <div class="text-center">
-            <img
-                src="/assets/images/elevenia-biz-black.png"
-                style="height: 70px;"
-              />
-            <div class="font-size-20 font-weight-400">
-              You Must Know
-            </div>
-          </div>
-        </div>
-        <div class="col-md-8">
-          <div class="row g-sm-5 g-3">
-            <div class="flex-container">
-              <div class="col-lg-4 col-6 px-sm-4 flex-item" v-for="(item, index) in you_must_know">
-                <div
-                  class="card border-0"
-                  style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);"
-                >
-                  <div class="text-center p-4">
-                    <div class="font-weight-600 font-size-18">
-                      {{ item.title }}
-                    </div>
-                  </div>
-                  <div>
-                    <img
-                      :src="item.image"
-                      class="w-100"
-                    />
-                  </div>
-                  <div class="p-4">
-                    <div class="font-size-14 font-weight-600">
-                      {{ item.description }}
-                    </div>
-                    <div class="mt-1 font-weight-400 font-size-12">
-                      {{ item.content }}
-                    </div>
-                  </div>
-                  <!-- <div
-                    class="py-2 text-center bg-p-blue-24 text-p-white font-weight-500 font-size-12"
-                  >
-                    Discover How
-                  </div> -->
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="mt-5 bg-p-blue-24">
-    <div class="container pb-4">
-      <div class="text-center py-4">
-        <div class="font-weight-500 font-size-30 text-p-white">
-          Achievement Results
-        </div>
-      </div>
-      <div class="row pb-5 pt-4 justify-content-center g-5">
-        <div class="col-xl-3 col-md-4 col-sm-6 px-xl-5" v-for="(item, index) in achievement_result">
-          <div
-            class="radius-10 text-center p-4"
-            style="background: rgba(217, 203, 191, 0.5); min-height: 190px;"
-          >
-            <div class="font-weight-600 font-size-15 text-p-white">
-              {{ item.title.toUpperCase() }}
-            </div>
-            <div class="mt-3 d-flex justify-content-center gap-3">
-              <div class="">
-                <div
-                  class="font-size-45 font-weight-400 text-p-white text-center"
-                >
-                  +{{ item.content }}
-                </div>
-                <div class="font-size-18 text-p-white text-center" v-if="item.title !== 'partner'">Million</div>
-              </div>
-              <div>
-                <img :src="item.image" />
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- <div class="col-xl-3 col-md-4 col-sm-6 px-xl-5">
-          <div
-            class="radius-10 text-center p-4"
-            style="background: rgba(217, 203, 191, 0.5); min-height: 190px;"
-          >
-            <div class="font-weight-600 font-size-15 text-p-white">
-              Customers
-            </div>
-            <div class="mt-3 d-flex justify-content-center gap-3">
-              <div class="">
-                <div
-                  class="font-size-45 font-weight-400 text-p-white text-center"
-                >
-                  +1.8
-                </div>
-                <div class="font-size-18 text-p-white text-center">Million</div>
-              </div>
-              <div>
-                <img src="/assets/images/users-icon-white.png" />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-md-4 col-sm-6 px-xl-5">
-          <div
-            class="radius-10 text-center p-4"
-            style="background: rgba(217, 203, 191, 0.5); min-height: 190px;"
-          >
-            <div class="font-weight-600 font-size-15 text-p-white">
-              Partner
-            </div>
-            <div class="mt-3 d-flex justify-content-center gap-3">
-              <div class="">
-                <div
-                  class="font-size-45 font-weight-400 text-p-white text-center"
-                >
-                  +100
-                </div>
-              </div>
-              <div>
-                <img src="/assets/images/partner-icon-white.png" />
-              </div>
-            </div>
-          </div>
-        </div> -->
-      </div>
-    </div>
-  </section>
-  <section class="my-5">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-8 text-center">
-          <div class="font-size-24 font-weight-500">
-            Smart leaders choose smart business buying
-          </div>
-          <div class="font-weight-400 font-size-16 mt-4">
-            Discover how over 5 million organizations are simplifying employee
-            purchasing with a one-stop shopping experience, real-time analytics,
-            and time saving features – backed by Earth’s largest selection of
-            business supplies.
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="" style="margin-top: 100px;">
-    <div class="container">
-      <div class="text-center">
-        <div class="font-weight-600 font-size-24">
-          Our Client
-        </div>
-      </div>
-      <div
-        class="bg-p-white pt-4 pb-3 px-3"
-        style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);"
+  <section class="mt-0">
+    <div>
+      <b-carousel
+        id="carousel-fade"
+        v-model="slide"
+        :interval="4000"
+        controls
+        fade
+        img-width="1024"
+        img-height="480"
+        style="text-shadow: 1px 1px 2px #333;"
+        @sliding-start="onSlideStart"
+        @sliding-end="onSlideEnd"
       >
-        <swiper
-          v-if="dataClient.length > 0"
-          class="ebiz_slider__client_partner px-4"
-          :navigation="true"
-          :modules="modules"
-          :pagination="{
-            clickable: true,
-          }"
-          :autoplay="{
-            delay: 2500,
-            disableOnInteraction: false,
-          }"
-        >
-          <swiper-slide v-for="(itemClient, index) in dataClient">
-            <div
-              class="row align-items-center justify-content-center"
-              :key="index"
-            >
-              <div
-                class="col-md-2 col-4 gy-4"
-                v-for="(item, index) in itemClient"
-                :key="item.id"
-              >
-                <div class="px-lg-4 px-3">
-                  <img
-                    :src="item.image"
-                    alt="partner logo"
-                    class="img-fluid"
-                    style="max-height: 150px; width: 190px;"
-                  />
-                </div>
-              </div>
-            </div>
-          </swiper-slide>
-        </swiper>
-      </div>
-    </div>
-  </section>
+        <!-- Text slides with image -->
+        <b-carousel-slide img-src="https://picsum.photos/1024/480/?image=57">
+          <img src="/assets/images/carousel/logogkj.png" class="justify-content-center mb-4" style="height:300px;" />
+          <h2>Selamat Datang di Gereja Kristen Jawa Yeremia</h2>
+          <h5>"Menjadi Jemaat Kristus yang Mewartakan Kerajaan Allah"</h5>
+        </b-carousel-slide>
 
-  <section class="mb-5" style="margin-top: 100px;">
-    <div class="container">
-      <div class="text-center">
-        <div class="font-weight-600 font-size-24">
-          Our Partner
-        </div>
+        <!-- Slides with custom text -->
+        <b-carousel-slide img-src="https://picsum.photos/1024/480/?image=54">
+          <img src="/assets/images/carousel/logogkj.png" class="justify-content-center mb-4" style="height:300px;" />
+          <h2>Selamat Datang di Gereja Kristen Jawa Yeremia</h2>
+          <p>"Menjadi Jemaat Kristus yang Mewartakan Kerajaan Allah"</p>
+        </b-carousel-slide>
+
+        <!-- Slides with image only -->
+        <b-carousel-slide img-src="https://picsum.photos/1024/480/?image=66">
+          <img src="/assets/images/carousel/logogkj.png" class="justify-content-center mb-4" style="height:300px;" />
+          <h2>Selamat Datang di Gereja Kristen Jawa Yeremia</h2>
+          <p>"Menjadi Jemaat Kristus yang Mewartakan Kerajaan Allah"</p>
+        </b-carousel-slide>
+        
+      </b-carousel>
+    </div>
+  </section>
+ 
+  <section>
+    <div class="row mx-0 my-5">
+      <div class="col-md-8 col-xs-12">
+        <iframe width="770" height="380" class="px-5 w-100" src="https://www.youtube.com/embed/rMKdnJe-l0w?si=z_6AtnduD9PY2MsK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <b-card
+            title="Renungan Harian"
+            sub-title="Daniel 6 : 16-18"
+            text-variant="center"
+            img-alt="Image"
+            img-height="85"
+            tag="warta"
+            style="max-width: 50rem;"
+            class="mb-xl-2 mb-5 mt-5 mx-5 border"
+          >
+            <b-card-text>
+              <div class="row mx-0 my-3">
+                <div class="col-md-8 col-xs-12">
+                  <b-img src="https://picsum.photos/1024/400/?image=43" fluid alt="Responsive image" class="mb-4"></b-img>
+                  <p class="text-justify">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                </div>
+                <div class="col-md-4 col-xs-12">
+                  <b-img src="https://picsum.photos/170/250/?image=43" fluid alt="Responsive image" class="mb-4"></b-img>
+                  <p class="text-justify px-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                </div>
+              </div>
+            </b-card-text>
+        </b-card>
       </div>
-      <div
-        class="bg-p-white pt-4 pb-3 px-3"
-        style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);"
-      >
-        <swiper
-          v-if="10 > 0"
-          class="ebiz_slider__client_partner px-4"
-          :navigation="true"
-          :modules="modules"
-          :pagination="{
-            clickable: true,
-          }"
-          :autoplay="{
-            delay: 2500,
-            disableOnInteraction: false,
-          }"
-        >
-          <swiper-slide v-for="(itemPartner, index) in dataPartners">
-            <div
-              class="row align-items-center justify-content-center"
-              :key="index"
-            >
-              <div
-                class="col-md-2 col-4 gy-4"
-                v-for="(item, index) in itemPartner"
-                :key="item.id"
-              >
-                <div class="px-lg-4 px-3">
-                  <img
-                  :src="item.image"
-                    alt="partner logo"
-                    class="img-fluid"
-                    style="max-height: 150px; width: 190px;"
-                  />
+      <div class="col-md-4 col-xs-12 my-25 pe-xl-5 px-xl-0 px-5">
+        <div>
+          <b-card
+            title="Jadwal Ibadah Minggu Ini"
+            img-height="85"
+            img-top
+            tag="warta"
+            style="max-width: 30rem;"
+            class="mb-5 border bg-soft-blue"
+          >
+            <div class="row mx-0 mb-3">
+              <div class="card mt-2">
+                <div class="card-body">
+                  <div class="d-flex flex-row">
+                    <div class="col-9">
+                      <h6 class="counter mb-2">Ibadah Online Hari Minggu</h6><hr class="my-0">
+                      <p class="mb-0 mt-2 fs-14">31 Agustus 2023</p>
+                      <p class="mb-0 fs-14">08:00-10:30 WIB</p>
+                    </div>
+                    <div class="col-3">
+                      <a href="#" class="btn bg-navy text-white rounded-pill my-4 mx-2 fs-14 fw-bold">Masuk</a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </swiper-slide>
-        </swiper>
+            <div class="row mx-0 mb-3">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex flex-row">
+                    <div class="col-9">
+                      <h6 class="counter mb-2">Ibadah Online Hari Minggu</h6><hr class="my-0">
+                      <p class="mb-0 mt-2 fs-14">31 Agustus 2023</p>
+                      <p class="mb-0 fs-14">08:00-10:30 WIB</p>
+                    </div>
+                    <div class="col-3">
+                      <a href="#" class="btn bg-navy text-white rounded-pill my-4 mx-2 fs-14 fw-bold">Masuk</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row mx-0">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex flex-row">
+                    <div class="col-9">
+                      <h6 class="counter mb-2">Ibadah Online Hari Minggu</h6><hr class="my-0">
+                      <p class="mb-0 mt-2 fs-14">31 Agustus 2023</p>
+                      <p class="mb-0 fs-14">08:00-10:30 WIB</p>
+                    </div>
+                    <div class="col-3">
+                      <a href="#" class="btn bg-navy text-white rounded-pill my-4 mx-2 fs-14 fw-bold">Masuk</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </b-card>
+
+          <b-card
+            title="Warta Jemaat"
+            text-variant="center"
+            img-src="/assets/images/carousel/bg-warta4.jpg"
+            img-alt="Image"
+            img-height="85"
+            img-top
+            tag="warta"
+            style="max-width: 30rem;"
+            class="border"
+          >
+            <b-card-text>
+              <div>
+                <table class="my-3 mx-3">
+                  <tr>
+                    <td width="100px" class="text-center py-3"><a href="#"><i class="fas fa-file-pdf" @click="showPdf" style="height:40px;"></i></a></td>
+                    <td width="400px" class="text-start fs-15 pb-3">Warta Jemaat<br> 5 November 2023</td>
+                  </tr>
+                  <tr>
+                    <td width="100px" class="text-center pb-3"><a href="#"><i class="fas fa-file-pdf" @click="showPdf" style="height:40px;"></i></a></td>
+                    <td width="400px" class="text-start fs-15 pb-3">Warta Jemaat<br> 5 November 2023</td>
+                  </tr>
+                  <tr>
+                    <td width="100px" class="text-center pb-3"><a href="#"><i class="fas fa-file-pdf" @click="showPdf" style="height:40px;"></i></a></td>
+                    <td width="400px" class="text-start fs-15 pb-3">Warta Jemaat<br> 5 November 2023</td>
+                  </tr>
+                  <tr>
+                    <td width="100px" class="text-center"><a href="#"><i class="fas fa-file-pdf" @click="showPdf" style="height:40px;"></i></a></td>
+                    <td width="400px" class="text-start fs-15">Warta Jemaat<br> 5 November 2023</td>
+                  </tr>
+                </table>
+              </div>
+            </b-card-text>
+          </b-card>
+        </div>
       </div>
     </div>
   </section>
+  
+  <section>
+    <div class="row mx-0 px-xl-0 px-5">
+    <b-card title="Punya Pergumulan dan Perlu Didoakan?" class="col-md-11 p-4 mb-5 text-center mx-auto"  style="background-image:url(/assets/images/carousel/cta5.jpg);" >
+      <b-button href="#" variant="primary" class="mt-3"><strong>Hubungi Kami</strong></b-button>
+    </b-card>
+    </div>
+  </section>
+  
+
 </template>
 
 <script>
@@ -419,6 +182,9 @@
   import "swiper/css";
   import "swiper/css/navigation";
   import 'swiper/css/pagination';
+  
+  // import 'vue-pdf';
+  // import 'vue-pdf/dist/pdf.worker.css';
 
   export default {
     name: "Home",
@@ -446,8 +212,10 @@
         partners: [],
         dataClient: [],
         dataPartners: [],
+        pdfUrl: '/assets/pdf/zz.pdf',
       };
     },
+  
     methods: {
       getData() {
         axios.get(window.baseURL + 'api/frontend/home')
@@ -519,24 +287,44 @@
     width: 25px;
   }
 
-  .ebiz_slider__card {
+  .gkj_slider__card {
     padding: 0 100px;
   }
 
+  .text-justify {
+  text-align: justify;
+  }
+
+  .fs-14{
+    font-size: 14px;
+  }
+
+  .fs-15{
+    font-size: 15px;
+  }
+
+  .bg-soft-blue{
+    background: #E0F4FF;
+  }
+
+  .bg-navy{
+    background: #001D6A;
+  }
+
   @media screen and (max-width: 493px) {
-    .ebiz_slider__card {
+    .gkj_slider__card {
       padding: 0 20px;
     }
   }
 
-  .ebiz_slider__card .ebiz_item_slider__card:hover {
+  .gkj_slider__card .ebiz_item_slider__card:hover {
     background: #aecaf5 !important;
     transition: 0.5s;
     width: 370px !important;
     height: 438px !important;
   }
 
-  .ebiz_slider__card .ebiz_item_slider__card:hover .text-p-white {
+  .gkj_slider__card .ebiz_item_slider__card:hover .text-p-white {
     color: black !important;
   }
 
@@ -574,4 +362,30 @@
     display: flex; 
     padding: 0.5em;
   }
+
+  .carousel-fade .carousel-item {
+ opacity: 0;
+ transition-duration: .6s;
+ transition-property: opacity;
+}
+
+.carousel-fade  .carousel-item.active,
+.carousel-fade  .carousel-item-next.carousel-item-left,
+.carousel-fade  .carousel-item-prev.carousel-item-right {
+  opacity: 1;
+}
+
+.carousel-fade .active.carousel-item-left,
+.carousel-fade  .active.carousel-item-right {
+ opacity: 0;
+}
+
+.carousel-fade  .carousel-item-next,
+.carousel-fade .carousel-item-prev,
+.carousel-fade .carousel-item.active,
+.carousel-fade .active.carousel-item-left,
+.carousel-fade  .active.carousel-item-prev {
+ transform: translateX(0);
+ transform: translate3d(0, 0, 0);
+}
 </style>

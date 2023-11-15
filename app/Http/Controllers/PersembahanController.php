@@ -33,6 +33,8 @@ class PersembahanController extends Controller
         try {
             $input = $request->toArray();
             
+            $input['perolehan_persembahan'] = (int) preg_replace('/\D/', '', $input['perolehan_persembahan']);
+
             $persembahan = Persembahan::create($input);
             
             DB::commit();
@@ -68,7 +70,7 @@ class PersembahanController extends Controller
         try {
             $input = $request->toArray();
             
-            
+            $input['perolehan_persembahan'] = (int) preg_replace('/\D/', '', $input['perolehan_persembahan']);
 
             $persembahan ->update($input);
             

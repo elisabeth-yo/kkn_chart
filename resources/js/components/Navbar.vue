@@ -1,103 +1,51 @@
 <template>
   <header
-    class="header fixed-top"
-    style="box-shadow: 0px -3px 10px 0px rgba(87, 67, 67, 0.2) inset;"
-  >
+    class="header fixed-top mx-15"
+    style="box-shadow: 0px -3px 10px 0px rgba(87, 67, 67, 0.2) inset;">
+  <div>
+    <b-navbar toggleable="md" type="dark" style="background-color:#0480fc;">
+      <b-navbar-brand href="#" class="mx-5 d-flex"><img src="/assets/images/carousel/logogkj.png" style="height:70px;" /></b-navbar-brand>
+      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
-    <div class="container-md d-flex flex-wrap justify-content-between mt-2 mb-2">
-      <router-link :class="`nav-link`" to="/">
-        <img src="/assets/images/espn.png" style="height: 30px;" />
-      </router-link>
-      <div v-if="this.$route.path !== '/'" class="text-center font-size-15 font-weight-600 mr-4" style="cursor: pointer"><a @click="$router.back()">Back To Previous</a></div>
-    </div>
+      <b-collapse class="flex-row-reverse px-4" id="nav-collapse" is-nav>
+        <!-- Right aligned nav items -->
+        <b-navbar-nav class="ml-auto">
+          <b-navbar-nav class="text-white px-2">
+            <b-nav-item href="/"><strong>Dashboard</strong></b-nav-item>
+          </b-navbar-nav>
 
-    <b-navbar
-      class="navbar-top navbar-expand-lg"
-      toggleable="md"
-      type="light"
-      variant="light"
-      style="box-shadow: 0px -3px 10px 0px rgba(87, 67, 67, 0.2) inset;"
-    >
-      <div class="container-md">
-        <b-navbar-brand class="d-md-none focus-border-0">
-          <img
-            src="/assets/images/footer-elevenia.png"
-            style="height: 60px; width: auto;"
-          />
-        </b-navbar-brand>
-        <div
-          v-if="isCollapse"
-          role="button"
-          class="btn border-0 d-md-none"
-          @click="toggleCollapse(false)"
-        >
-          <i class="fas fa-times font-size-30"></i>
-        </div>
-        <div
-          v-else
-          role="button"
-          class="btn border-0 d-md-none"
-          @click="toggleCollapse(true)"
-        >
-          <i class="fas fa-bars font-size-30"></i>
-        </div>
-        <b-collapse class="justify-content-center py-2" id="navBarCollapse" is-nav>
-          <!-- <div class="navbar-nav pe-2 pe-md-5">
-            <router-link :class="`nav-link`" to="/">
-              <img
-                src="/assets/images/footer-elevenia.png"
-                style="height: 60px;"
-              />
-            </router-link>
-          </div> -->
-          <ul class="navbar-nav mb-0">
-            <li class="nav-item d-none d-md-block">
-              <router-link :class="`nav-link d-flex align-items-center`" to="/">
-                <img
-                  src="/assets/images/footer-elevenia.png"
-                  style="height: 60px; width: auto;"
-                />
-              </router-link>
-            </li>
-            <li
-              v-for="(item, indexNav) in navbar"
-              :key="indexNav"
-              class="nav-item"
-            >
-              <b-nav-item-dropdown class="dropdown" v-if="item.industryNav" :text="item.name" right>
-                <b-dropdown-item
-                  v-for="(navItem, index) in item.industryNav"
-                  :key="index"
-                  :href="`${item.link}${navItem.link}`"
-                  class="w-100 px-2">
-                  <div class="d-flex align-items-center gap-3">
-                    <!-- <div>
-                      <img :src="`/${navItem.icon}`" />
-                    </div> -->
-                    <div class="font-size-16 font-weight-500">
-                      {{ navItem.title }}
-                    </div>
-                  </div>
-                </b-dropdown-item>
-              </b-nav-item-dropdown>
-              <router-link
-                v-else
-                :class="`nav-link font-weight-600 font-size-16 ${
-                  item.link == currentUrl ? 'active' : ''
-                }`"
-                :to="item.link"
-                >{{ item.name }}</router-link
-              >
-            </li>
-            <!-- <li class="nav-item">
-              <router-link :class="`nav-link`" to="/">
-                <img src="/assets/images/espn.png" style="height: 30px;" />
-              </router-link>
-            </li> -->
-          </ul>
-        </b-collapse>
-      </div>
+          <b-navbar-nav class="text-nowrap px-2">
+            <b-nav-item href="/sejarah-gereja"><strong>Tentang Gereja</strong></b-nav-item>
+          </b-navbar-nav>
+
+          <b-navbar-nav>
+            <b-nav-item href="/administrasi"><strong>Administrasi</strong></b-nav-item>
+          </b-navbar-nav>
+
+          <b-navbar-nav class="text-nowrap">
+            <b-nav-item href="/data_jemaat" class=text-white><strong>Data Jemaat</strong></b-nav-item>
+          </b-navbar-nav>
+
+          <b-navbar-nav class="text-white">
+            <b-nav-item href="#"><strong>Berita & Kegiatan</strong></b-nav-item>
+          </b-navbar-nav>
+
+          <b-navbar-nav class="text-white">
+            <b-nav-item href="#"><strong>Streaming Ibadah</strong></b-nav-item>
+          </b-navbar-nav>
+
+          <b-nav-item-dropdown right class="pe-5">
+            <!-- Using 'button-content' slot -->
+            <template #button-content>
+              <strong>Pengguna</strong>
+            </template>
+            <b-dropdown-item href="/detail_jemaat">Profile</b-dropdown-item>
+            <b-dropdown-item href="#">Sign Out</b-dropdown-item>
+          </b-nav-item-dropdown>
+        </b-navbar-nav>
+      </b-collapse>
     </b-navbar>
+  </div>
   </header>
 </template>
 
@@ -155,6 +103,7 @@
     gap: 4px;
     border: 1px solid rgba(0, 0, 0, 0.10);
     border-radius: 8px !important;
+    
   }
 
   .navbar-nav .dropdown-menu .dropdown-item:hover,

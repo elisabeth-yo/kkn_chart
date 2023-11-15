@@ -45,7 +45,7 @@
                                 <td>{{ data.nama_ibadah }}</td>
                                 <td>{{ data.tanggal_waktu_pelaksanaan }}</td>
                                 <td>{{ data.tempat_pelaksanaan }}</td>
-                                <td>{{ data.link_streaming }}</td>
+                                <td><a :href="data.link_streaming" :alt="data.link_streaming" class="file">{{ data.link_streaming }}</a></td>
                                 <td><img :src="data.file_poster" :alt="data.nama_ibadah" class="img"></td>
                                 
                                 <td>
