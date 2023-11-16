@@ -18,6 +18,7 @@ use App\Http\Controllers\BeritaKegiatanController;
 use App\Http\Controllers\JadwalIbadahController;
 use App\Http\Controllers\WartaJemaatController;
 use App\Http\Controllers\PersembahanController;
+use App\Http\Controllers\JenisIbadahController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -128,6 +129,14 @@ Route::group(['prefix' => 'admin', 'middleware' => []], function () {
             Route::post('store', [PersembahanController::class, 'store'])->name('store');
             Route::patch('/update/{id_persembahan}', [PersembahanController::class, 'update'])->name('update');
             Route::delete('/destroy/{id_persembahan}', [PersembahanController::class, 'destroy'])->name('destroy');
+        });
+
+        Route::group(['prefix' => 'jenisibadah', 'as' => 'jenisibadah.', 'middleware' => []], function () {
+            Route::get('/', [JenisIbadahController::class, 'index'])->name('index');
+            Route::get('/{id_jenis_ibadah}', [JenisIbadahController::class, 'show'])->name('show');
+            Route::post('store', [JenisIbadahController::class, 'store'])->name('store');
+            Route::patch('/update/{id_jenis_ibadah}', [JenisIbadahController::class, 'update'])->name('update');
+            Route::delete('/destroy/{id_jenis_ibadah}', [JenisIbadahController::class, 'destroy'])->name('destroy');
         });
 
 

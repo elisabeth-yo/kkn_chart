@@ -19,6 +19,8 @@ import beritakegiatan from '../pages/beritakegiatan/beritakegiatan.vue';
 import jadwalibadah from '../pages/jadwalibadah/jadwalibadah.vue';
 import wartajemaat from '../pages/wartajemaat/wartajemaat.vue';
 import persembahan from '../pages/persembahan/persembahan.vue';
+import jenisibadah from '../pages/jenisibadah/jenisibadah.vue';
+
 
 const routeForAdmin = [
     {
@@ -99,6 +101,14 @@ const routeForAdmin = [
         component: persembahan,
         meta: {
             title: 'Admin | Persembahan'
+        }
+    },
+    {
+        path: '/admin/jenisibadah',
+        name: 'admin.jenisibadah',
+        component: jenisibadah,
+        meta: {
+            title: 'Admin | Jenis Ibadah'
         }
     },
     {

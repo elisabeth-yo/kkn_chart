@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Persembahan</h1>
+                    <h1 class="m-0">Jenis Ibadah</h1>
                 </div>
             </div>
         </div>
@@ -16,7 +16,7 @@
                 <div class="d-flex">
                     <button @click="add" type="button" class="mb-2 btn btn-primary">
                         <i class="fa fa-plus-circle mr-1"></i>
-                        Tambah Persembahan
+                        Tambah Jenis Ibadah
                     </button>
                 </div>
                 <div>
@@ -29,32 +29,18 @@
                         <thead>
                             <tr>
                                 <th style="width: 10px">#</th>
-                                <th>Id Persembahan</th>
-                                <th>Perolehan Persembahan</th>
-                                <th>Keterangan</th>
-                                <th>Id Jadwal Ibadah</th>
-                                <th>Id Pengguna</th>
-                                <th>Id Jenis Ibadah</th>
-                                <th>Tanggal Ibadah</th>
-                                
+
+                                <th>Jenis Ibadah</th>
                             </tr>
                         </thead>
                         <tbody v-if="datas.data.length > 0" class="tbody-">
                             <tr v-for="(data, index) in datas.data" :key="index">                                    
                                 <td v-if="pageNumber > 1">{{ pageNumber - 1 }}{{ index + 1 }}</td>
                                 <td v-else>{{ index + 1 }}</td>
-                                <td>{{ data.id_persembahan }}</td>
-                                <td>Rp {{ data.perolehan_persembahan }}</td>
-                                <td>{{ data.keterangan }}</td>
-                                <td>{{ data.id_jadwal_ibadah }}</td>
-                                <td>{{ data.id_pengguna }}</td>
-                                <td>{{ data.jenis_ibadah }}</td>
-                                <td>{{ data.tanggal_ibadah }}</td>
-                                
-                               
+                                <td>{{ data.jenis_ibadah}}</td>
                                 <td>
                                     <a href="#" @click.prevent="edit(data)"><i class="fa fa-edit"></i></a>
-                                    <a href="#" @click.prevent="confirmDeletion(data.id_persembahan)"><i class="fa fa-trash text-danger ml-2"></i></a>
+                                    <a href="#" @click.prevent="confirmDeletion(data.id_jenis_ibadah)"><i class="fa fa-trash text-danger ml-2"></i></a>
                                 </td>
                             </tr>
                         </tbody>
@@ -80,8 +66,8 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="staticBackdropLabel">
-                        <span v-if="statusEditing">Edit Persembahan</span>
-                        <span v-else>Tambah Persembahan</span>
+                        <span v-if="statusEditing">Edit Jenis Ibadah</span>
+                        <span v-else>Tambah Jenis Ibadah</span>
                     </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -90,46 +76,13 @@
                 <Form ref="form" @submit="handleSubmit" :validation-schema="statusEditing ? editDataSchema : createDataSchema" v-slot="{ errors }" :initial-values="formValues">
                     <div class="modal-body">
                         
-                        
-
-                        <div class="form-group">
-                            <label for="perolehan_persembahan">Perolehan Persembahan</label>
-                            <Field name="perolehan_persembahan" type="text" class="form-control" :class="{ 'is-invalid': errors.perolehan_persembahan }" id="perolehan_persembahan"/>
-                            <span class="invalid-feedback">{{ errors.perolehan_persembahan }}</span>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="keterangan">Keterangan</label>
-                            <Field name="keterangan" as="textarea" class="form-control" :class="{ 'is-invalid': errors.keterangan }" id="keterangan" cols="30" rows="10"/>
-                            <span class="invalid-feedback">{{ errors.keterangan }}</span>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="id_jadwal_ibadah">Id Jadwal Ibadah</label>
-                            <Field name="id_jadwal_ibadah" type="text" class="form-control" :class="{ 'is-invalid': errors.id_jadwal_ibadah }" id="id_jadwal_ibadah" />
-                            <span class="invalid-feedback">{{ errors.id_jadwal_ibadah }}</span>
-                        </div>
-                        
-
-                        <div class="form-group">
-                            <label for="id_pengguna">Id Pengguna</label>
-                            <Field name="id_pengguna" type="text" class="form-control" :class="{ 'is-invalid': errors.id_pengguna }" id="id_pengguna" />
-                            <span class="invalid-feedback">{{ errors.id_pengguna }}</span>
-                        </div>
-
                         <div class="form-group">
                             <label for="jenis_ibadah">Jenis Ibadah</label>
-                            <Field name="jenis_ibadah" type="text" class="form-control" :class="{ 'is-invalid': errors.jenis_ibadah }" id="jenis_ibadah" />
+                            <Field name="jenis_ibadah" type="text" class="form-control" :class="{ 'is-invalid': errors.jenis_ibadah }" id="jenis_ibadah"/>
                             <span class="invalid-feedback">{{ errors.jenis_ibadah }}</span>
                         </div>
-
-                        <div class="form-group">
-                            <label for="tanggal_ibadah">Tanggal Ibadah</label>
-                            <Field name="tanggal_ibadah" type="date" class="form-control" :class="{ 'is-invalid': errors.tanggal_ibadah }" id="tanggal_ibadah" />
-                            <span class="invalid-feedback">{{ errors.tanggal_ibadah }}</span>
-                        </div>
-
                         
+                       
                         
                     </div>
                     <div class="modal-footer">
@@ -184,58 +137,28 @@
     const statusEditing      = ref(false);
     const form               = ref(null);
     const formValues         = ref(null);
-    const formFile          = ref(null);
-    
+    const formImage          = ref(null);
     const dataIdBeingDeleted = ref(null);
     const pageNumber         = ref(0);
-    const resetValueImage    = () => {
-        $ ("#file_warta").val(null);
-       
-
-    };
-    
 
     const createDataSchema = yup.object({
-        perolehan_persembahan       : yup.string().required(),
-        keterangan                  : yup.string().required(),
-        id_jadwal_ibadah            : yup.string().required(),
-        id_pengguna                 : yup.string().required(),
-        jenis_ibadah                : yup.string().required(),
-        tanggal_ibadah              : yup.string().required(),
-       
+        jenis_ibadah              : yup.string().required(),
     });
     const editDataSchema = yup.object({ 
-        perolehan_persembahan       : yup.string().required(),
-        keterangan                  : yup.string().required(),
-        id_jadwal_ibadah            : yup.string().required(),
-        id_pengguna                 : yup.string().required(),
-        jenis_ibadah                : yup.string().required(),
-        tanggal_ibadah              : yup.string().required(),
+        jenis_ibadah              : yup.string().required(),
     });
     const initForm = (data = null) => {
         if (data) {
             formValues.value = {
-                id_persembahan          : data.id_persembahan,
-                perolehan_persembahan   : data.perolehan_persembahan,
-                keterangan              : data.keterangan,
-                id_jadwal_ibadah        : data.id_jadwal_ibadah,
-                id_pengguna             : data.id_pengguna,
-                jenis_ibadah            : data.jenis_ibadah,
-                tanggal_ibadah          : data.tanggal_ibadah,
-               
+                id_jenis_ibadah       : data.id_jenis_ibadah,
+                jenis_ibadah          : data.jenis_ibadah,
+                
             };
-            
-                        
+            formImage.value = { image : data.image };            
         } else {
             formValues.value = {
-                id_persembahan          : null,
-                perolehan_persembahan   : null,
-                keterangan              : null,
-                id_jadwal_ibadah        : null,
-                id_pengguna             : null,
+                id_jenis_ibadah         : null,
                 jenis_ibadah            : null,
-                tanggal_ibadah          : null,
-                
             };
         }
     };
@@ -246,7 +169,7 @@
             page: page,
             search: searchQuery.value
         };
-        requestGet(`admin/persembahan`, queryParam)
+        requestGet(`admin/jenisibadah`, queryParam)
         .then((RESPONSE) => {
             datas.value              = RESPONSE.data;
             dataLinkPagination.value = RESPONSE.data.meta.links;
@@ -266,17 +189,16 @@
         statusEditing.value = false;
         $('#modalForm').modal('show');
         initForm();
-        resetValueImage();
     };
     const createData = (values, { resetForm, setErrors }) => {
         const formData = new FormData();
         Object.keys(values).forEach(key => {
-            if (key !== 'id_persembahan') {
+            if (key !== 'id_jenis_ibadah') {
                 formData.append(key, values[key]);
             }
         });
 
-        requestPost('admin/persembahan/store', formData)
+        requestPost('admin/jenisibadah/store', formData)
         .then((RESPONSE) => {
             datas.value.data.push(RESPONSE.data);
             $('#modalForm').modal('hide');
@@ -294,20 +216,19 @@
         form.value.resetForm();
         $('#modalForm').modal('show');
         initForm(data);
-        resetValueImage();
         
     };
     const updateData = (values, { resetForm, setErrors }) => {
         const formData = new FormData();
         Object.keys(values).forEach(key => {
-            if (values[key] && key !== 'id_persembahan') {
+            if (values[key] && key !== 'id_jenis_ibadah') {
                 formData.append(key, values[key])                
             }
         });                
         
-        requestPatch(`admin/persembahan/update/${formValues.value.id_persembahan}`, { _method: 'PATCH'}, formData)
+        requestPatch(`admin/jenisibadah/update/${formValues.value.id_jenis_ibadah}`, { _method: 'PATCH'}, formData)
         .then((RESPONSE) => {
-            const index = datas.value.data.findIndex(data => data.id_persembahan === RESPONSE.data.id_persembahan);
+            const index = datas.value.data.findIndex(data => data.id_jenis_ibadah === RESPONSE.data.id_jenis_ibadah);
             datas.value.data[index] = RESPONSE.data;
             resetForm();
             $('#modalForm').modal('hide');
@@ -316,16 +237,16 @@
             setErrors(error.response.data.errors);
         });
     };
-    const confirmDeletion = (id_persembahan) => {
-        dataIdBeingDeleted.value = id_persembahan;
+    const confirmDeletion = (id_jenis_ibadah) => {
+        dataIdBeingDeleted.value = id_jenis_ibadah;
         $('#modalDeleteForm').modal('show');
     };
     const deleteData = () => {
-        requestDelete(`admin/persembahan/destroy/${dataIdBeingDeleted.value}`)
+        requestDelete(`admin/jenisibadah/destroy/${dataIdBeingDeleted.value}`)
         .then(() => {
             $('#modalDeleteForm').modal('hide');
             toastr.success('Data deleted successfully!');
-            datas.value.data = datas.value.data.filter(data => data.id_persembahan !== dataIdBeingDeleted.value);
+            datas.value.data = datas.value.data.filter(data => data.id_jenis_ibadah !== dataIdBeingDeleted.value);
         }).catch((error) => {
             setErrors(error.response.data.errors);
         });

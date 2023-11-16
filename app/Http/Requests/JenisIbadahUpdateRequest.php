@@ -7,7 +7,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Str;
 
-class PersembahanUpdateRequest extends FormRequest
+class JenisIbadahUpdateRequest extends FormRequest
 {
     /**
     * Determine if the user is authorized to make this request.
@@ -27,13 +27,7 @@ class PersembahanUpdateRequest extends FormRequest
    public function rules()
    {
        return [
-        'perolehan_persembahan' => ['required'], 
-        'keterangan' => ['required'], 
-        'id_jadwal_ibadah' => ['required'], 
-        'id_pengguna' => ['required'], 
         'jenis_ibadah' => ['required'], 
-        'tanggal_ibadah' => ['required'], 
-
        ];
    }
 
@@ -52,3 +46,4 @@ class PersembahanUpdateRequest extends FormRequest
     */
    
 }
+
