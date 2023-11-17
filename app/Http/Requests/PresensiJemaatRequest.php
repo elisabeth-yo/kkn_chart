@@ -8,7 +8,7 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 
-class PersembahanRequest extends FormRequest
+class PresensiJemaatRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,12 +29,9 @@ class PersembahanRequest extends FormRequest
     {
         return [
 
-            'perolehan_persembahan' => ['required'], 
-            'keterangan' => ['required'], 
+            'tanggal_waktu_presensi' => ['required'], 
             'id_jadwal_ibadah' => ['required'], 
-            'id_pengguna' => ['required'],
-            'id_jenis_ibadah' => ['required'], 
-            'tanggal_ibadah' => ['required'], 
+            'id_pengguna' => ['required'], 
            
         ];
     }

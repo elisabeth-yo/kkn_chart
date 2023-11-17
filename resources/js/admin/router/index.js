@@ -20,6 +20,8 @@ import jadwalibadah from '../pages/jadwalibadah/jadwalibadah.vue';
 import wartajemaat from '../pages/wartajemaat/wartajemaat.vue';
 import persembahan from '../pages/persembahan/persembahan.vue';
 import jenisibadah from '../pages/jenisibadah/jenisibadah.vue';
+import publikasirenungan from '../pages/publikasirenungan/publikasirenungan.vue';
+import presensijemaat from '../pages/presensijemaat/presensijemaat.vue';
 
 
 const routeForAdmin = [
@@ -109,6 +111,22 @@ const routeForAdmin = [
         component: jenisibadah,
         meta: {
             title: 'Admin | Jenis Ibadah'
+        }
+    },
+    {
+        path: '/admin/publikasirenungan',
+        name: 'admin.publikasirenungan',
+        component: publikasirenungan,
+        meta: {
+            title: 'Admin | Publikasi Renungan'
+        }
+    },
+    {
+        path: '/admin/presensijemaat',
+        name: 'admin.presensijemaat',
+        component: presensijemaat,
+        meta: {
+            title: 'Admin | Presensi Jemaat'
         }
     },
     {

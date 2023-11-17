@@ -2,13 +2,14 @@
 
 namespace App\Http\Requests;
 
+
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 
-class PersembahanRequest extends FormRequest
+class PublikasiRenunganRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,12 +30,9 @@ class PersembahanRequest extends FormRequest
     {
         return [
 
-            'perolehan_persembahan' => ['required'], 
-            'keterangan' => ['required'], 
-            'id_jadwal_ibadah' => ['required'], 
-            'id_pengguna' => ['required'],
-            'id_jenis_ibadah' => ['required'], 
-            'tanggal_ibadah' => ['required'], 
+            'tanggal_publikasi' => ['required'], 
+            'id_bahan_bacaan' => ['required'], 
+            'id_pengguna' => ['required'], 
            
         ];
     }
@@ -54,3 +52,4 @@ class PersembahanRequest extends FormRequest
      */
     
 }
+

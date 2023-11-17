@@ -119,6 +119,24 @@
                         </router-link>
                     </li>
 
+                    <li class="nav-item">
+                        <router-link to="/admin/publikasirenungan" active-class="active" class="nav-link">
+                            <i class="nav-icon fas fa-handshake"></i>
+                            <p>
+                                Publikasi Renungan
+                            </p>
+                        </router-link>
+                    </li>
+
+                    <li class="nav-item">
+                        <router-link to="/admin/presensijemaat" active-class="active" class="nav-link">
+                            <i class="nav-icon fas fa-handshake"></i>
+                            <p>
+                                Presensi Jemaat
+                            </p>
+                        </router-link>
+                    </li>
+
                     <!-- <li class="nav-item">
                         <router-link to="/admin/clients" active-class="active" class="nav-link">
                             <i class="nav-icon fas fa-user-tie"></i>

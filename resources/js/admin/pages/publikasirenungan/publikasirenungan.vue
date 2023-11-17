@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Persembahan</h1>
+                    <h1 class="m-0">Publikasi Renungan</h1>
                 </div>
             </div>
         </div>
@@ -16,7 +16,7 @@
                 <div class="d-flex">
                     <button @click="add" type="button" class="mb-2 btn btn-primary">
                         <i class="fa fa-plus-circle mr-1"></i>
-                        Tambah Persembahan
+                        Tambah Publikas Renungan
                     </button>
                 </div>
                 <div>
@@ -29,32 +29,21 @@
                         <thead>
                             <tr>
                                 <th style="width: 10px">#</th>
-                                <th>Id Persembahan</th>
-                                <th>Perolehan Persembahan</th>
-                                <th>Keterangan</th>
-                                <th>Id Jadwal Ibadah</th>
+                                <th>Tanggal Publikasi</th>
+                                <th>Id Bahan Bacaan</th>
                                 <th>Id Pengguna</th>
-                                <th>Id Jenis Ibadah</th>
-                                <th>Tanggal Ibadah</th>
-                                
                             </tr>
                         </thead>
                         <tbody v-if="datas.data.length > 0" class="tbody-">
                             <tr v-for="(data, index) in datas.data" :key="index">                                    
                                 <td v-if="pageNumber > 1">{{ pageNumber - 1 }}{{ index + 1 }}</td>
                                 <td v-else>{{ index + 1 }}</td>
-                                <td>{{ data.id_persembahan }}</td>
-                                <td>Rp {{ data.perolehan_persembahan }}</td>
-                                <td>{{ data.keterangan }}</td>
-                                <td>{{ data.id_jadwal_ibadah }}</td>
-                                <td>{{ data.id_pengguna }}</td>
-                                <td>{{ data.id_jenis_ibadah }}</td>
-                                <td>{{ data.tanggal_ibadah }}</td>
-                                
-                               
+                                <td>{{ data.tanggal_publikasi}}</td>
+                                <td>{{ data.id_bahan_bacaan}}</td>
+                                <td>{{ data.id_pengguna}}</td>
                                 <td>
                                     <a href="#" @click.prevent="edit(data)"><i class="fa fa-edit"></i></a>
-                                    <a href="#" @click.prevent="confirmDeletion(data.id_persembahan)"><i class="fa fa-trash text-danger ml-2"></i></a>
+                                    <a href="#" @click.prevent="confirmDeletion(data.id_publikasi_renungan)"><i class="fa fa-trash text-danger ml-2"></i></a>
                                 </td>
                             </tr>
                         </tbody>
@@ -80,8 +69,8 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="staticBackdropLabel">
-                        <span v-if="statusEditing">Edit Persembahan</span>
-                        <span v-else>Tambah Persembahan</span>
+                        <span v-if="statusEditing">Edit Publikasi Renungan</span>
+                        <span v-else>Tambah Publikasi Renungan</span>
                     </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -90,46 +79,25 @@
                 <Form ref="form" @submit="handleSubmit" :validation-schema="statusEditing ? editDataSchema : createDataSchema" v-slot="{ errors }" :initial-values="formValues">
                     <div class="modal-body">
                         
-                        
-
                         <div class="form-group">
-                            <label for="perolehan_persembahan">Perolehan Persembahan</label>
-                            <Field name="perolehan_persembahan" type="text" class="form-control" :class="{ 'is-invalid': errors.perolehan_persembahan }" id="perolehan_persembahan"/>
-                            <span class="invalid-feedback">{{ errors.perolehan_persembahan }}</span>
+                            <label for="tanggal_publikasi">Tanggal Publikasi</label>
+                            <Field name="tanggal_publikasi" type="date" class="form-control" :class="{ 'is-invalid': errors.tanggal_publikasi }" id="tanggal_publikasi"/>
+                            <span class="invalid-feedback">{{ errors.tanggal_publikasi }}</span>
                         </div>
 
                         <div class="form-group">
-                            <label for="keterangan">Keterangan</label>
-                            <Field name="keterangan" as="textarea" class="form-control" :class="{ 'is-invalid': errors.keterangan }" id="keterangan" cols="30" rows="10"/>
-                            <span class="invalid-feedback">{{ errors.keterangan }}</span>
+                            <label for="id_bahan_bacaan">Id Bahan Bacaan</label>
+                            <Field name="id_bahan_bacaan" type="text" class="form-control" :class="{ 'is-invalid': errors.id_bahan_bacaan }" id="id_bahan_bacaan"/>
+                            <span class="invalid-feedback">{{ errors.id_bahan_bacaan }}</span>
                         </div>
-
-                        <div class="form-group">
-                            <label for="id_jadwal_ibadah">Id Jadwal Ibadah</label>
-                            <Field name="id_jadwal_ibadah" type="text" class="form-control" :class="{ 'is-invalid': errors.id_jadwal_ibadah }" id="id_jadwal_ibadah" />
-                            <span class="invalid-feedback">{{ errors.id_jadwal_ibadah }}</span>
-                        </div>
-                        
 
                         <div class="form-group">
                             <label for="id_pengguna">Id Pengguna</label>
-                            <Field name="id_pengguna" type="text" class="form-control" :class="{ 'is-invalid': errors.id_pengguna }" id="id_pengguna" />
+                            <Field name="id_pengguna" type="text" class="form-control" :class="{ 'is-invalid': errors.id_pengguna }" id="id_pengguna"/>
                             <span class="invalid-feedback">{{ errors.id_pengguna }}</span>
                         </div>
-
-                        <div class="form-group">
-                            <label for="id_jenis_ibadah">Id Jenis Ibadah</label>
-                            <Field name="id_jenis_ibadah" type="text" class="form-control" :class="{ 'is-invalid': errors.id_jenis_ibadah }" id="id_jenis_ibadah" />
-                            <span class="invalid-feedback">{{ errors.id_jenis_ibadah }}</span>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="tanggal_ibadah">Tanggal Ibadah</label>
-                            <Field name="tanggal_ibadah" type="date" class="form-control" :class="{ 'is-invalid': errors.tanggal_ibadah }" id="tanggal_ibadah" />
-                            <span class="invalid-feedback">{{ errors.tanggal_ibadah }}</span>
-                        </div>
-
                         
+                       
                         
                     </div>
                     <div class="modal-footer">
@@ -184,58 +152,36 @@
     const statusEditing      = ref(false);
     const form               = ref(null);
     const formValues         = ref(null);
-    const formFile          = ref(null);
-    
+    const formImage          = ref(null);
     const dataIdBeingDeleted = ref(null);
     const pageNumber         = ref(0);
-    const resetValueImage    = () => {
-        $ ("#file_warta").val(null);
-       
-
-    };
-    
 
     const createDataSchema = yup.object({
-        perolehan_persembahan       : yup.string().required(),
-        keterangan                  : yup.string().required(),
-        id_jadwal_ibadah            : yup.string().required(),
-        id_pengguna                 : yup.string().required(),
-        id_jenis_ibadah                : yup.string().required(),
-        tanggal_ibadah              : yup.string().required(),
-       
+        tanggal_publikasi              : yup.string().required(),
+        id_bahan_bacaan                : yup.string().required(),
+        id_pengguna                    : yup.string().required(),
     });
     const editDataSchema = yup.object({ 
-        perolehan_persembahan       : yup.string().required(),
-        keterangan                  : yup.string().required(),
-        id_jadwal_ibadah            : yup.string().required(),
-        id_pengguna                 : yup.string().required(),
-        id_jenis_ibadah                : yup.string().required(),
-        tanggal_ibadah              : yup.string().required(),
+        tanggal_publikasi              : yup.string().required(),
+        id_bahan_bacaan                : yup.string().required(),
+        id_pengguna                    : yup.string().required(),
     });
     const initForm = (data = null) => {
         if (data) {
             formValues.value = {
-                id_persembahan          : data.id_persembahan,
-                perolehan_persembahan   : data.perolehan_persembahan,
-                keterangan              : data.keterangan,
-                id_jadwal_ibadah        : data.id_jadwal_ibadah,
-                id_pengguna             : data.id_pengguna,
-                id_jenis_ibadah            : data.jenis_ibadah,
-                tanggal_ibadah          : data.tanggal_ibadah,
-               
+                id_publikasi_renungan          : data.id_publikasi_renungan,
+                tanggal_publikasi              : data.tanggal_publikasi,
+                id_bahan_bacaan                : data.id_bahan_bacaan,
+                id_pengguna                    : data.id_pengguna,
+                
             };
-            
-                        
+            formImage.value = { image : data.image };            
         } else {
             formValues.value = {
-                id_persembahan          : null,
-                perolehan_persembahan   : null,
-                keterangan              : null,
-                id_jadwal_ibadah        : null,
-                id_pengguna             : null,
-                id_jenis_ibadah            : null,
-                tanggal_ibadah          : null,
-                
+                id_publikasi_renungan          : null,
+                tanggal_publikasi              : null,
+                id_bahan_bacaan                : null,
+                id_pengguna                    : null,
             };
         }
     };
@@ -246,7 +192,7 @@
             page: page,
             search: searchQuery.value
         };
-        requestGet(`admin/persembahan`, queryParam)
+        requestGet(`admin/publikasirenungan`, queryParam)
         .then((RESPONSE) => {
             datas.value              = RESPONSE.data;
             dataLinkPagination.value = RESPONSE.data.meta.links;
@@ -266,17 +212,16 @@
         statusEditing.value = false;
         $('#modalForm').modal('show');
         initForm();
-        resetValueImage();
     };
     const createData = (values, { resetForm, setErrors }) => {
         const formData = new FormData();
         Object.keys(values).forEach(key => {
-            if (key !== 'id_persembahan') {
+            if (key !== 'id_publikasi_renungan') {
                 formData.append(key, values[key]);
             }
         });
 
-        requestPost('admin/persembahan/store', formData)
+        requestPost('admin/publikasirenungan/store', formData)
         .then((RESPONSE) => {
             datas.value.data.push(RESPONSE.data);
             $('#modalForm').modal('hide');
@@ -294,20 +239,19 @@
         form.value.resetForm();
         $('#modalForm').modal('show');
         initForm(data);
-        resetValueImage();
         
     };
     const updateData = (values, { resetForm, setErrors }) => {
         const formData = new FormData();
         Object.keys(values).forEach(key => {
-            if (values[key] && key !== 'id_persembahan') {
+            if (values[key] && key !== 'id_publikasi_renungan') {
                 formData.append(key, values[key])                
             }
         });                
         
-        requestPatch(`admin/persembahan/update/${formValues.value.id_persembahan}`, { _method: 'PATCH'}, formData)
+        requestPatch(`admin/publikasirenungan/update/${formValues.value.id_publikasi_renungan}`, { _method: 'PATCH'}, formData)
         .then((RESPONSE) => {
-            const index = datas.value.data.findIndex(data => data.id_persembahan === RESPONSE.data.id_persembahan);
+            const index = datas.value.data.findIndex(data => data.id_publikasi_renungan === RESPONSE.data.id_publikasi_renungan);
             datas.value.data[index] = RESPONSE.data;
             resetForm();
             $('#modalForm').modal('hide');
@@ -316,16 +260,16 @@
             setErrors(error.response.data.errors);
         });
     };
-    const confirmDeletion = (id_persembahan) => {
-        dataIdBeingDeleted.value = id_persembahan;
+    const confirmDeletion = (id_publikasi_renungan) => {
+        dataIdBeingDeleted.value = id_publikasi_renungan;
         $('#modalDeleteForm').modal('show');
     };
     const deleteData = () => {
-        requestDelete(`admin/persembahan/destroy/${dataIdBeingDeleted.value}`)
+        requestDelete(`admin/publikasirenungan/destroy/${dataIdBeingDeleted.value}`)
         .then(() => {
             $('#modalDeleteForm').modal('hide');
             toastr.success('Data deleted successfully!');
-            datas.value.data = datas.value.data.filter(data => data.id_persembahan !== dataIdBeingDeleted.value);
+            datas.value.data = datas.value.data.filter(data => data.id_publikasi_renungan !== dataIdBeingDeleted.value);
         }).catch((error) => {
             setErrors(error.response.data.errors);
         });

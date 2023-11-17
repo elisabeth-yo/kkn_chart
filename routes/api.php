@@ -19,6 +19,8 @@ use App\Http\Controllers\JadwalIbadahController;
 use App\Http\Controllers\WartaJemaatController;
 use App\Http\Controllers\PersembahanController;
 use App\Http\Controllers\JenisIbadahController;
+use App\Http\Controllers\PublikasiRenunganController;
+use App\Http\Controllers\PresensiJemaatController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -137,6 +139,22 @@ Route::group(['prefix' => 'admin', 'middleware' => []], function () {
             Route::post('store', [JenisIbadahController::class, 'store'])->name('store');
             Route::patch('/update/{id_jenis_ibadah}', [JenisIbadahController::class, 'update'])->name('update');
             Route::delete('/destroy/{id_jenis_ibadah}', [JenisIbadahController::class, 'destroy'])->name('destroy');
+        });
+
+        Route::group(['prefix' => 'publikasirenungan', 'as' => 'publikasirenungan.', 'middleware' => []], function () {
+            Route::get('/', [PublikasiRenunganController::class, 'index'])->name('index');
+            Route::get('/{id_publikasi_renungan}', [PublikasiRenunganController::class, 'show'])->name('show');
+            Route::post('store', [PublikasiRenunganController::class, 'store'])->name('store');
+            Route::patch('/update/{id_publikasi_renungan}', [PublikasiRenunganController::class, 'update'])->name('update');
+            Route::delete('/destroy/{id_publikasi_renungan}', [PublikasiRenunganController::class, 'destroy'])->name('destroy');
+        });
+
+        Route::group(['prefix' => 'presensijemaat', 'as' => 'presensijemaat.', 'middleware' => []], function () {
+            Route::get('/', [PresensiJemaatController::class, 'index'])->name('index');
+            Route::get('/{id_presensi_jemaat}', [PresensiJemaatController::class, 'show'])->name('show');
+            Route::post('store', [PresensiJemaatController::class, 'store'])->name('store');
+            Route::patch('/update/{id_presensi_jemaat}', [PresensiJemaatController::class, 'update'])->name('update');
+            Route::delete('/destroy/{id_presensi_jemaat}', [PresensiJemaatController::class, 'destroy'])->name('destroy');
         });
 
 
