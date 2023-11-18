@@ -18,7 +18,7 @@ class RenunganHarianResource extends JsonResource
             'id_renungan' => $this->id_renungan,
             'judul' => $this->judul,
             'deskripsi' => $this->deskripsi,
-            'gambar_bahan_bacaan' =>env('VITE_APP_URL') .$this->poster_kegiatan,
+            'gambar_bahan_bacaan' =>env('VITE_APP_URL') .$this->gambar_bahan_bacaan,
             'sumber_referensi' => $this->sumber_referensi,
             'tanggal_dibuat' => $this->tanggal_dibuat,
         ];

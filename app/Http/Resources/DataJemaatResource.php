@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class JemaatResource extends JsonResource
+class DataJemaatResource extends JsonResource
 {
     /**
     * Transform the resource into an array.
@@ -44,7 +44,7 @@ class JemaatResource extends JsonResource
             'rata_rata_penghasilan' => $this->rata_rata_penghasilan,
             'status_rumah_tinggal' => $this->status_rumah_tinggal,
             'transportasi_utama' => $this->transportasi_utama,
-            'foto' => $this->foto,
+            'foto' =>env('VITE_APP_URL') . $this->foto,
             'id_wilayah' => $this->id_wilayah,
         ];
     }

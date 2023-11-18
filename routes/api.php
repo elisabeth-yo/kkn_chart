@@ -22,6 +22,7 @@ use App\Http\Controllers\JenisIbadahController;
 use App\Http\Controllers\PublikasiRenunganController;
 use App\Http\Controllers\PresensiJemaatController;
 use App\Http\Controllers\RenunganHarianController;
+use App\Http\Controllers\DataJemaatController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -76,6 +77,14 @@ Route::group(['prefix' => 'admin', 'middleware' => []], function () {
             Route::post('store', [UserController::class, 'store'])->name('store');
             Route::patch('/update/{userId}', [UserController::class, 'update'])->name('update');
             Route::delete('/destroy/{userId}', [UserController::class, 'destroy'])->name('destroy');
+        });
+
+        Route::group(['prefix' => 'datajemaat', 'as' => 'datajemaata.', 'middleware' => []], function () {
+            Route::get('/', [DataJemaatController::class, 'index'])->name('index');
+            Route::get('/{id_data_jemaat}', [DataJemaatController::class, 'show'])->name('show');
+            Route::post('store', [DataJemaatController::class, 'store'])->name('store');
+            Route::patch('/update/{id_data_jemaat}', [DataJemaatController::class, 'update'])->name('update');
+            Route::delete('/destroy/{id_data_jemaat}', [DataJemaatController::class, 'destroy'])->name('destroy');
         });
 
         Route::group(['prefix' => 'pengguna', 'as' => 'pengguna.', 'middleware' => []], function () {

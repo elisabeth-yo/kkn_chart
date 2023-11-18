@@ -14,10 +14,10 @@
         <div class="container-fluid">
             <div class="d-flex justify-content-between">
                 <div class="d-flex">
-                    <button @click="add" type="button" class="mb-2 btn btn-primary">
+                    <!-- <button @click="add" type="button" class="mb-2 btn btn-primary">
                         <i class="fa fa-plus-circle mr-1"></i>
                         Tambah Presensi Jemaat
-                    </button>
+                    </button> -->
                 </div>
                 <div>
                     <input type="text" v-model="searchQuery" class="form-control" placeholder="Search..." />

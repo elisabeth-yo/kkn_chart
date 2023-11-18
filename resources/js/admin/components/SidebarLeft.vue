@@ -30,22 +30,13 @@
                     </li>
 
                     <li class="nav-item">
-                        <router-link to="" :class="$route.path.startsWith('/admin/industries') ? 'active' : ''" class="nav-link">
+                        <router-link to="/admin/datajemaat" active-class="active" class="nav-link">
                             <i class="nav-icon fas fa-industry"></i>
                             <p>
                                 Data Jemaat
                             </p>
                         </router-link>
                     </li>
-
-                    <!-- <li class="nav-item">
-                        <router-link to="" class="nav-link">
-                            <i class="nav-icon fas fa-gift"></i>
-                            <p>
-                                Streaming Ibadah
-                            </p>
-                        </router-link>
-                    </li> -->
 
                     <li class="nav-item">
                         <router-link to="/admin/pengguna" active-class="active" class="nav-link">

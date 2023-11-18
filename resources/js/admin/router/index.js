@@ -23,6 +23,7 @@ import jenisibadah from '../pages/jenisibadah/jenisibadah.vue';
 import publikasirenungan from '../pages/publikasirenungan/publikasirenungan.vue';
 import presensijemaat from '../pages/presensijemaat/presensijemaat.vue';
 import renunganharian from '../pages/renunganharian/renunganharian.vue';
+import datajemaat from '../pages/datajemaat/datajemaat.vue';
 
 const routeForAdmin = [
     {
@@ -47,6 +48,14 @@ const routeForAdmin = [
         component: Users,
         meta: {
             title: 'Admin | Users'
+        }
+    },
+    {
+        path: '/admin/datajemaat',
+        name: 'admin.datajemaat',
+        component: datajemaat,
+        meta: {
+            title: 'Admin | Data Jemaat'
         }
     },
     {

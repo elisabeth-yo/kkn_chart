@@ -42,8 +42,8 @@
     <div class="row mx-0 my-5">
       <div class="col-md-8 col-xs-12">
         <iframe width="770" height="380" class="px-5 w-100" src="https://www.youtube.com/embed/rMKdnJe-l0w?si=z_6AtnduD9PY2MsK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        <b-card
-            title="Renungan Harian"
+        <b-card v-for="(item, index) in renungan_harians"
+            title= {{ item.judul }}
             sub-title="Daniel 6 : 16-18"
             text-variant="center"
             img-alt="Image"
@@ -202,15 +202,11 @@
     },
     data() {
       return {
-        hero_header: [],
-        why_choose_me: [],
-        how_to_order: [],
-        you_must_know: [],
-        achievement_result: [],
-        email_inquiry: [],
-        clients: [],
-        partners: [],
-        dataClient: [],
+        judul: [],
+        deskripsi: [],
+        gambar_bahan_bacaan: [],
+
+
         dataPartners: [],
         pdfUrl: '/assets/pdf/zz.pdf',
       };
@@ -220,19 +216,10 @@
       getData() {
         axios.get(window.baseURL + 'api/frontend/home')
               .then((data) => {
-                this.hero_header = data.data.data.homeSettings['hero_header']
-                this.why_choose_me = data.data.data.homeSettings['why_choose_me']
-                this.how_to_order = data.data.data.homeSettings['how_to_order']
-                this.you_must_know = data.data.data.homeSettings['you_must_know']
-                this.achievement_result = data.data.data.homeSettings['achievement_result']
-
-                this.achievement_result.sort(function(a, b) { 
-                  return ( a.id - b.id  ||  a.name.localeCompare(b.name) );
-                });
-
-                this.clients = data.data.data.clients
-                this.partners = data.data.data.partners
-
+                this.judul = data.data.data.renunganharian['judul']
+                this.deskripsi = data.data.data.renunganharian['deskripsi']
+                this.gambar_bahan_bacaan = data.data.data.renunganharian['gambar_bahan_bacaan']
+              
                 this.filterData()
               })
               .catch((err) => {

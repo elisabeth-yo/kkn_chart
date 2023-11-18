@@ -34,7 +34,7 @@
                                 <th>Gambar Bahan Bacaan</th>
                                 <th>Sumber Referensi</th>
                                 <th>Tanggal Dibuat</th>
-                                <th>Id Kategori Bacaan</th>
+                               
                             </tr>
                         </thead>
                         <tbody v-if="datas.data.length > 0" class="tbody-">
@@ -43,7 +43,7 @@
                                 <td v-else>{{ index + 1 }}</td>
                                 <td>{{ data.judul}}</td>
                                 <td>{{ data.deskripsi}}</td>
-                                <td>{{ data.gambar_bahan_bacaan}}</td>
+                                <td><img :src="data.gambar_bahan_bacaan" :alt="data.judul" class="img"></td>
                                 <td>{{ data.sumber_referensi}}</td>
                                 <td>{{ data.tanggal_dibuat}}</td>
                                 <td>
