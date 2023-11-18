@@ -21,6 +21,7 @@ use App\Http\Controllers\PersembahanController;
 use App\Http\Controllers\JenisIbadahController;
 use App\Http\Controllers\PublikasiRenunganController;
 use App\Http\Controllers\PresensiJemaatController;
+use App\Http\Controllers\RenunganHarianController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -155,6 +156,14 @@ Route::group(['prefix' => 'admin', 'middleware' => []], function () {
             Route::post('store', [PresensiJemaatController::class, 'store'])->name('store');
             Route::patch('/update/{id_presensi_jemaat}', [PresensiJemaatController::class, 'update'])->name('update');
             Route::delete('/destroy/{id_presensi_jemaat}', [PresensiJemaatController::class, 'destroy'])->name('destroy');
+        });
+
+        Route::group(['prefix' => 'renunganharian', 'as' => 'renunganharian.', 'middleware' => []], function () {
+            Route::get('/', [RenunganHarianController::class, 'index'])->name('index');
+            Route::get('/{id_judul}', [RenunganHarianController::class, 'show'])->name('show');
+            Route::post('store', [RenunganHarianController::class, 'store'])->name('store');
+            Route::patch('/update/{id_judul}', [RenunganHarianController::class, 'update'])->name('update');
+            Route::delete('/destroy/{id_judul}', [RenunganHarianController::class, 'destroy'])->name('destroy');
         });
 
 

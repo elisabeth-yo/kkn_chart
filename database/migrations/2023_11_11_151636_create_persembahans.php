@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('id_jadwal_ibadah');
             $table->string('id_pengguna');
             $table->string('id_jenis_ibadah');
-            $table->string('tanggal_ibadah');
+            $table->string('tanggal_input');
             $table->timestamps();
         });
     }

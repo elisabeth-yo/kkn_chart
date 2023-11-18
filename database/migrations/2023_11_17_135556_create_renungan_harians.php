@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('gambar_bahan_bacaan');
             $table->string('sumber_referensi');
             $table->date('tanggal_dibuat');
-            $table->string('id_kategori_bacaan');
             $table->timestamps();
         });
     }

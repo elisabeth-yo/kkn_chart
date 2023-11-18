@@ -171,7 +171,7 @@
             formValues.value = {
                 id_presensi_jemaat          : data.id_presensi_jemaat,
                 tanggal_waktu_presensi      : data.tanggal_waktu_presensi,
-                id_jadwal_ibadah            : data.id_bahan_bacaan,
+                id_jadwal_ibadah            : data.id_jadwal_ibadah,
                 id_pengguna                 : data.id_pengguna,
                 
             };

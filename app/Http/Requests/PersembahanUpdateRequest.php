@@ -32,7 +32,7 @@ class PersembahanUpdateRequest extends FormRequest
         'id_jadwal_ibadah' => ['required'], 
         'id_pengguna' => ['required'], 
         'id_jenis_ibadah' => ['required'], 
-        'tanggal_ibadah' => ['required'], 
+        'tanggal_input' => ['required'], 
 
        ];
    }

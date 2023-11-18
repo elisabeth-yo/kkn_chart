@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('publikasi_renungans', function (Blueprint $table) {
             $table->integer('id_publikasi_renungan')->autoIncrement();
             $table->date('tanggal_publikasi');
-            $table->integer('id_bahan_bacaan');
+            $table->integer('id_renungan');
             $table->integer('id_pengguna');
             $table->timestamps();
         });

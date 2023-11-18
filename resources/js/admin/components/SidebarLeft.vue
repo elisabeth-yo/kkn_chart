@@ -38,14 +38,14 @@
                         </router-link>
                     </li>
 
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <router-link to="" class="nav-link">
                             <i class="nav-icon fas fa-gift"></i>
                             <p>
                                 Streaming Ibadah
                             </p>
                         </router-link>
-                    </li>
+                    </li> -->
 
                     <li class="nav-item">
                         <router-link to="/admin/pengguna" active-class="active" class="nav-link">
@@ -133,6 +133,15 @@
                             <i class="nav-icon fas fa-handshake"></i>
                             <p>
                                 Presensi Jemaat
+                            </p>
+                        </router-link>
+                    </li>
+
+                    <li class="nav-item">
+                        <router-link to="/admin/renunganharian" active-class="active" class="nav-link">
+                            <i class="nav-icon fas fa-handshake"></i>
+                            <p>
+                                Renungan Harian
                             </p>
                         </router-link>
                     </li>

@@ -39,7 +39,7 @@
                                 <td v-if="pageNumber > 1">{{ pageNumber - 1 }}{{ index + 1 }}</td>
                                 <td v-else>{{ index + 1 }}</td>
                                 <td>{{ data.tanggal_publikasi}}</td>
-                                <td>{{ data.id_bahan_bacaan}}</td>
+                                <td>{{ data.id_renungan}}</td>
                                 <td>{{ data.id_pengguna}}</td>
                                 <td>
                                     <a href="#" @click.prevent="edit(data)"><i class="fa fa-edit"></i></a>
@@ -86,9 +86,9 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="id_bahan_bacaan">Id Bahan Bacaan</label>
-                            <Field name="id_bahan_bacaan" type="text" class="form-control" :class="{ 'is-invalid': errors.id_bahan_bacaan }" id="id_bahan_bacaan"/>
-                            <span class="invalid-feedback">{{ errors.id_bahan_bacaan }}</span>
+                            <label for="id_renungan">Id Renungan</label>
+                            <Field name="id_renungan" type="text" class="form-control" :class="{ 'is-invalid': errors.id_renungan }" id="id_renungan"/>
+                            <span class="invalid-feedback">{{ errors.id_renungan }}</span>
                         </div>
 
                         <div class="form-group">
@@ -158,12 +158,12 @@
 
     const createDataSchema = yup.object({
         tanggal_publikasi              : yup.string().required(),
-        id_bahan_bacaan                : yup.string().required(),
+        id_renungan                : yup.string().required(),
         id_pengguna                    : yup.string().required(),
     });
     const editDataSchema = yup.object({ 
         tanggal_publikasi              : yup.string().required(),
-        id_bahan_bacaan                : yup.string().required(),
+        id_renungan                : yup.string().required(),
         id_pengguna                    : yup.string().required(),
     });
     const initForm = (data = null) => {
@@ -171,7 +171,7 @@
             formValues.value = {
                 id_publikasi_renungan          : data.id_publikasi_renungan,
                 tanggal_publikasi              : data.tanggal_publikasi,
-                id_bahan_bacaan                : data.id_bahan_bacaan,
+                id_renungan                    : data.id_renungan,
                 id_pengguna                    : data.id_pengguna,
                 
             };
@@ -180,7 +180,7 @@
             formValues.value = {
                 id_publikasi_renungan          : null,
                 tanggal_publikasi              : null,
-                id_bahan_bacaan                : null,
+                id_renungan                : null,
                 id_pengguna                    : null,
             };
         }

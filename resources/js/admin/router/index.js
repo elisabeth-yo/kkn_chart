@@ -22,7 +22,7 @@ import persembahan from '../pages/persembahan/persembahan.vue';
 import jenisibadah from '../pages/jenisibadah/jenisibadah.vue';
 import publikasirenungan from '../pages/publikasirenungan/publikasirenungan.vue';
 import presensijemaat from '../pages/presensijemaat/presensijemaat.vue';
-
+import renunganharian from '../pages/renunganharian/renunganharian.vue';
 
 const routeForAdmin = [
     {
@@ -127,6 +127,14 @@ const routeForAdmin = [
         component: presensijemaat,
         meta: {
             title: 'Admin | Presensi Jemaat'
+        }
+    },
+    {
+        path: '/admin/renunganharian',
+        name: 'admin.renunganharian',
+        component: renunganharian,
+        meta: {
+            title: 'Admin | Renungan Harian'
         }
     },
     {

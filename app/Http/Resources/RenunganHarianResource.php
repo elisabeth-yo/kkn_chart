@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class PublikasiRenunganResource extends JsonResource
+class RenunganHarianResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,11 +15,12 @@ class PublikasiRenunganResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id_publikasi_renungan' => $this->id_publikasi_renungan,
-            'tanggal_publikasi' => $this->tanggal_publikasi,
             'id_renungan' => $this->id_renungan,
-            'id_pengguna' => $this->id_pengguna,
-
+            'judul' => $this->judul,
+            'deskripsi' => $this->deskripsi,
+            'gambar_bahan_bacaan' =>env('VITE_APP_URL') .$this->poster_kegiatan,
+            'sumber_referensi' => $this->sumber_referensi,
+            'tanggal_dibuat' => $this->tanggal_dibuat,
         ];
     }
 }

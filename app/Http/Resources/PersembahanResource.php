@@ -21,7 +21,7 @@ class PersembahanResource extends JsonResource
             'id_jadwal_ibadah' => $this->id_jadwal_ibadah,
             'id_pengguna' => $this->id_pengguna,
             'id_jenis_ibadah' => $this->id_jenis_ibadah,
-            'tanggal_ibadah' => $this->tanggal_ibadah,
+            'tanggal_input' => $this->tanggal_input,
 
         ];
     }

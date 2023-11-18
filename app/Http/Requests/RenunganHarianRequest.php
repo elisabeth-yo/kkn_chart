@@ -2,14 +2,13 @@
 
 namespace App\Http\Requests;
 
-
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 
-class PublikasiRenunganRequest extends FormRequest
+class RenunganHarianRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,10 +28,11 @@ class PublikasiRenunganRequest extends FormRequest
     public function rules()
     {
         return [
-
-            'tanggal_publikasi' => ['required'], 
-            'id_renungan' => ['required'], 
-            'id_pengguna' => ['required'], 
+            'judul' => ['required'], 
+            'deskripsi' => ['required'], 
+            'gambar_bahan_bacaan' => ['image', 'mimes:jpeg,png,jpg'],
+            'sumber_referensi' => ['required'], 
+            'tanggal_dibuat' => ['required'], 
            
         ];
     }
@@ -52,4 +52,3 @@ class PublikasiRenunganRequest extends FormRequest
      */
     
 }
-
