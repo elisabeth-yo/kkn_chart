@@ -39,7 +39,7 @@ class PersembahanRequest extends FormRequest
         ];
     }
 
-    // protected function failedValidation(Validator $validator)
+    // protected function failedValidation(Validator $validator)1
     // {
     //     throw new HttpResponseException(response ([
     //         "errors" => $validator->getMessageBag()

@@ -6,7 +6,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class PersembahanResource extends JsonResource
 {
-    /**
+    /**q
      * Transform the resource into an array.
      *
      * @param  \Illuminate\Http\Request  $request

@@ -20,7 +20,7 @@ class PersembahanUpdateRequest extends FormRequest
    }
 
    /**
-    * Get the validation rules that apply to the request.
+    * Get the validation rules that apply to the request.1
     *
     * @return array<string, mixed>
     */

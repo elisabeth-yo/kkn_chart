@@ -105,7 +105,7 @@ class PersembahanController extends Controller
         DB::beginTransaction();
 
         try {
-           
+           //persembahan
 
             $persembahan ->delete();
             
