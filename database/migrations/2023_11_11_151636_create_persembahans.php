@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('persembahans', function (Blueprint $table) {
             $table->integer('id_persembahan')->autoIncrement();
             $table->integer('perolehan_persembahan');
-            $table->string('keterangan');
+            $table->text('keterangan');
             $table->string('id_jadwal_ibadah');
             $table->string('id_pengguna');
             $table->string('id_jenis_ibadah');

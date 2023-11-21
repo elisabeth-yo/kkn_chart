@@ -152,25 +152,93 @@
     </section>
 </template>
 <script>
+  import { Swiper, SwiperSlide } from "swiper/vue";
+  import { Navigation, Pagination } from "swiper/modules";
+  import "swiper/css";
+  import "swiper/css/navigation";
+  import 'swiper/css/pagination';
+  
+  // import 'vue-pdf';
+  // import 'vue-pdf/dist/pdf.worker.css';
+
   export default {
-    mounted() {
-      this.getData();
+    name: "Home",
+    components: {
+      Swiper,
+      SwiperSlide,
     },
+    setup() {
+      return {
+        modules: [Navigation, Pagination],
+      };
+    },
+    
     data() {
       return {
-        profile_photo: []
-      }
+        hero_header: [],
+        loaderRenunganHarian: [],
+        pdfUrl: '/assets/pdf/zz.pdf',
+      };
     },
+
+    mounted() {
+        this.getRenunganHarian();
+    },
+
+    computed: {
+        containerElement() {
+            return document.querySelector(".overflow-auto");
+        },
+        contentElement() {
+            return document.querySelector(".achievement");
+        },
+        maxScrollOffset() {
+            return (
+                this.contentElement.scrollWidth - this.containerElement.clientWidth
+            );
+        },
+    },
+
     methods: {
-      getData() {
-        axios.get(window.baseURL + 'api/frontend/home')
-              .then((data) => {
-                // foto dari db
-                this.profile_photo = data.data.data.homeSettings['profile_photo']
-        })
-      }
-    }
-  }
+        async getRenunganHarian() {
+            this.loaderRenunganHarian = true;
+            try {
+                const res = await axios.get("/api/renunganharian/renunganharian");
+                this.renunganharians = res.data.data;
+            } catch (err) {
+                console.log(err);
+            }
+            this.loaderRenunganHarian = false;
+        },
+        
+        scrollLeft() {
+            this.scrollOffset -= this.scrollStep;
+            if (this.scrollOffset < 0) {
+                this.scrollOffset = 0;
+            }
+            this.scrollToOffset();
+        },
+        scrollRight() {
+            this.scrollOffset += this.scrollStep;
+            if (this.scrollOffset > this.maxScrollOffset) {
+                this.scrollOffset = this.maxScrollOffset;
+            }
+            this.scrollToOffset();
+        },
+        scrollToOffset() {
+            this.containerElement.scrollLeft = this.scrollOffset;
+        },
+        scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+
+    },
+
+  
+  };
 </script>
 <style>
   .detail-jemaat{

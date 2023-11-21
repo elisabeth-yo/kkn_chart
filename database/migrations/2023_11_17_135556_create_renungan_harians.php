@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('renungan_harians', function (Blueprint $table) {
             $table->integer('id_renungan')->autoIncrement();
             $table->string('judul')->unique();
-            $table->string('deskripsi');
+            $table->text('deskripsi');
             $table->string('gambar_bahan_bacaan');
-            $table->string('sumber_referensi');
+            $table->text('sumber_referensi');
             $table->date('tanggal_dibuat');
             $table->timestamps();
         });

@@ -1,40 +1,41 @@
+FOOTER
+
 <template>
   <footer>
     <div style="background-color:#001D6A">
       <div class="container-fluid">
-        <div class="row p-4">
-          
+        <div class="row p-4 pt-0">
           <div class="col-lg-6 text-white">
-            <div class="d-flex flex-wrap gap-3 mb-lg-0 mb-2">
-              <h5><strong>Informasi Kontak Kesekretariatan</strong></h5>
-              <table class="contact-info">
+            <div class="flex-wrap gap-3 mb-lg-0 mb-2 mt-5">
+              <h5 class="mb-4"><strong>Kantor Gereja</strong></h5>
+              <table>
                     <tr>
                           <td style="width: 29px; vertical-align:top; padding-right: 20px;">
                               <p class="mb-0"><i class="fa fa-map-marker"></i></p>
                           </td>
-                          <td><p class="mb-0">Jl Melati Raya 1 A RT 004 Depok Jaya Pancoran Mas Depok Jawa Barat, Depok Jaya, Kec. Pancoran Mas, Kota Depok, Jawa Barat 16436</p></td>
+                          <td><p class="mb-0">Jl. Melati Raya No. 1A, Depok 16432</p></td>
                     </tr>
                     <tr>
                           <td style="width: 29px; vertical-align:top; padding-right: 20px;">
                               <p class="mb-0"><i class="fa fa-phone"></i></p>
                           </td>
-                          <td><p class="mb-0">(021) 77203180</p></td>
+                          <td><p class="mb-0">(021) 7522589</p></td>
                     </tr>
                     <tr>
                           <td style="width: 29px; vertical-align:top; padding-right: 20px;">
                               <p class="mb-0"><i class="fa fa-envelope"></i></p>
                           </td>
-                          <td><p class="mb-0">yeremia@gmail.com</p></td>
+                          <td><p class="mb-0">kantor.yeremia@gmail.com</p></td>
                     </tr>
                     <tr>
                           <td style="width: 29px; vertical-align:top; padding-right: 20px;">
                               <p class="mb-0"><i class="fa-solid fa-money-check-dollar"></i></p>
                           </td>
-                          <td><p class="mb-0">070 301 466 3 - BCA</p></td>
+                          <td><p class="mb-0">157-00-062608-2 - Bank Mandiri</p></td>
                     </tr><br>
                     <tr>
-                      <td><i class="fa-brands fa-instagram" style="width:30px; height:30px;"></i></td>
-                      <td><i class="fa-brands fa-facebook ms-3" style="width:30px; height:30px;"></i></td>
+                      <td><a href="https://www.instagram.com/gkjyeremiadepok/"><i class="fa-brands fa-instagram text-white" style="width:30px; height:30px;"></i></a></td>
+                      <td><a href="http://facebook.com/gkj.depok"><i class="fa-brands fa-facebook ms-3 text-white" style="width:30px; height:30px;"></i></a></td>
                     </tr>
               </table>
             </div>

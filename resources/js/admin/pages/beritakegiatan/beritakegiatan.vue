@@ -94,11 +94,17 @@
                             <span class="invalid-feedback">{{ errors.nama_kegiatan }}</span>
                         </div>
 
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="deskripsi_kegiatan">Deskripsi Kegiatan</label>
                             <Field name="deskripsi_kegiatan" as="textarea" class="form-control" :class="{ 'is-invalid': errors.deskripsi_kegiatan }" id="deskripsi_kegiatan" cols="30" rows="10"/>
                             <span class="invalid-feedback">{{ errors.deskripsi_kegiatan }}</span>
-                        </div>
+                        </div> -->
+
+                        <div class="form-group">
+                            <label for="deskripsi_kegiatan">Deskripsi Kegiatan</label>
+                            <el-tiptap v-model:deskripsi_kegiatan="deskripsi_kegiatan" :extensions="extensions" output="html" name="deskripsi_kegiatan" :class="{ 'is-invalid': errors.deskripsi_kegiatan }" id="deskripsi_kegiatan"></el-tiptap>
+                            <span class="invalid-feedback">{{ errors.deskripsi_kegiatan }}</span>
+                        </div>
 
                         
 

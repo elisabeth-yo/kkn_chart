@@ -46,9 +46,12 @@
                                 <td><img :src="data.gambar_bahan_bacaan" :alt="data.judul" class="img"></td>
                                 <td>{{ data.sumber_referensi}}</td>
                                 <td>{{ data.tanggal_dibuat}}</td>
+                               
+                                
                                 <td>
+
                                     <a href="#" @click.prevent="edit(data)"><i class="fa fa-edit"></i></a>
-                                    <a href="#" @click.prevent="confirmDeletion(data.id_judul)"><i class="fa fa-trash text-danger ml-2"></i></a>
+                                    <a href="#" @click.prevent="confirmDeletion(data.id_renungan)"><i class="fa fa-trash text-danger ml-2"></i></a>
                                 </td>
                             </tr>
                         </tbody>
@@ -166,6 +169,7 @@
 
     // CONST
     const datas              = ref({'data': []});
+    console.log(datas)
     const searchQuery        = ref(null);
     const dataLinkPagination = ref(null);
     const statusEditing      = ref(false);
@@ -227,6 +231,7 @@
         requestGet(`admin/renunganharian`, queryParam)
         .then((RESPONSE) => {
             datas.value              = RESPONSE.data;
+            console.log(RESPONSE);
             dataLinkPagination.value = RESPONSE.data.meta.links;
         })
         .catch((ERROR) => {
@@ -278,7 +283,7 @@
     const updateData = (values, { resetForm, setErrors }) => {
         const formData = new FormData();
         Object.keys(values).forEach(key => {
-            if (values[key] && key !== 'id_judul') {
+            if (values[key] && key !== 'id_renungan') {
                 formData.append(key, values[key])                
             }
         });                

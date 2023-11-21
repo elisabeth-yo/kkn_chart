@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('berita_kegiatans', function (Blueprint $table) {
             $table->integer('id_berita')->autoIncrement();
             $table->string('nama_kegiatan')->unique();
-            $table->string('deskripsi_kegiatan');
+            $table->text('deskripsi_kegiatan');
             $table->date('tanggal_pelaksanaan');
             $table->string('poster_kegiatan');
             $table->string('foto_kegiatan');

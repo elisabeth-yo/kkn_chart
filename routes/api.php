@@ -87,13 +87,7 @@ Route::group(['prefix' => 'admin', 'middleware' => []], function () {
             Route::delete('/destroy/{id_data_jemaat}', [DataJemaatController::class, 'destroy'])->name('destroy');
         });
 
-        Route::group(['prefix' => 'pengguna', 'as' => 'pengguna.', 'middleware' => []], function () {
-            Route::get('/', [PenggunaController::class, 'index'])->name('index');
-            Route::get('/{id_pengguna}', [PenggunaController::class, 'show'])->name('show');
-            Route::post('store', [PenggunaController::class, 'store'])->name('store');
-            Route::patch('/update/{id_pengguna}', [PenggunaController::class, 'update'])->name('update');
-            Route::delete('/destroy/{id_pengguna}', [PenggunaController::class, 'destroy'])->name('destroy');
-        });
+      
 
         Route::group(['prefix' => 'wilayah', 'as' => 'wilayah.', 'middleware' => []], function () {
             Route::get('/', [WilayahController::class, 'index'])->name('index');
@@ -169,10 +163,10 @@ Route::group(['prefix' => 'admin', 'middleware' => []], function () {
 
         Route::group(['prefix' => 'renunganharian', 'as' => 'renunganharian.', 'middleware' => []], function () {
             Route::get('/', [RenunganHarianController::class, 'index'])->name('index');
-            Route::get('/{id_judul}', [RenunganHarianController::class, 'show'])->name('show');
+            Route::get('/{id_renungan}', [RenunganHarianController::class, 'show'])->name('show');
             Route::post('store', [RenunganHarianController::class, 'store'])->name('store');
-            Route::patch('/update/{id_judul}', [RenunganHarianController::class, 'update'])->name('update');
-            Route::delete('/destroy/{id_judul}', [RenunganHarianController::class, 'destroy'])->name('destroy');
+            Route::patch('/update/{id_renungan}', [RenunganHarianController::class, 'update'])->name('update');
+            Route::delete('/destroy/{id_renungan}', [RenunganHarianController::class, 'destroy'])->name('destroy');
         });
 
 
@@ -225,6 +219,11 @@ Route::get('frontend/industries/get/{industryCode}', [FrontEndController::class,
 Route::get('frontend/supplies/get/{supplyCode}', [FrontEndController::class, 'getSupplyByCode']);
 Route::get('frontend/contact-us/get', [FrontEndController::class, 'getContactUs']);
 
+Route::group(['prefix' => 'renunganharian', 'as' => 'renunganharian.', 'middleware' => []], function () {
+    Route::get('/renunganharian', [RenunganHarianController::class,'index'])->name('index');
+    Route::get('/', [RenunganHarianController::class, 'index'])->name('index');
+    Route::get('/{id_judul}', [RenunganHarianController::class, 'show'])->name('show');
+});
 Route::post('frontend/send-inquiry', [FrontEndController::class, 'sendInquiry'])->middleware([
     'throttle:3,10'
 ]);
